@@ -7,3 +7,16 @@ site: bookdown::bookdown_site
 
 # Introduction
 
+This workshop, sponsored by the Institute for Behavioral Science (IBS) and the Center for Research Data and Digital Scholarship (CRDDS) at the University of Colorado Boulder, explore important principles and tools for working with data in R. Its goal is not to provide a comprehensive introduction to the R language, but to provide a practical and example-driven discussion that serves as a starting point for your own exploration. Topics covered include:
+
+* R as a calculator
+* Object/Variable assignment
+* Data structures
+* Writing basic custom functions
+* Iteration using the *purrr* package
+* Importing and exporting data from R
+* Functions for wrangling, visualizing, and processsing numeric data
+* Automating basic data workflows using custom functions and iteration
+
+The workshop is designed for R beginners, and would be especially helpful for researchers who are interested in transitioning from proprietary data analysis packages such as SPSS and Stata into R.
+

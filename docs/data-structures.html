@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>5 Data Structures | An R Primer for Social Scientists</title>
+  <meta name="description" content="5 Data Structures | An R Primer for Social Scientists" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="5 Data Structures | An R Primer for Social Scientists" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="5 Data Structures | An R Primer for Social Scientists" />
+  
+  
+  
+
+<meta name="author" content="Aditya Ranganath" />
+
+
+<meta name="date" content="2024-02-14" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="object-assignment-and-manipulation.html"/>
+<link rel="next" href="writing-functions.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.31/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/dt-ext-scroller-1.13.6/css/scroller.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-scroller-1.13.6/js/dataTables.scroller.min.js"></script>
+<link href="libs/dt-ext-fixedcolumns-1.13.6/css/fixedColumns.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-fixedcolumns-1.13.6/js/dataTables.fixedColumns.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R Primer</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="preliminaries.html"><a href="preliminaries.html"><i class="fa fa-check"></i><b>2</b> Preliminaries</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="preliminaries.html"><a href="preliminaries.html#r-and-rstudio-installation"><i class="fa fa-check"></i><b>2.1</b> R and RStudio Installation</a></li>
+<li class="chapter" data-level="2.2" data-path="preliminaries.html"><a href="preliminaries.html#the-rstudio-interface"><i class="fa fa-check"></i><b>2.2</b> The RStudio Interface</a></li>
+<li class="chapter" data-level="2.3" data-path="preliminaries.html"><a href="preliminaries.html#install-packages"><i class="fa fa-check"></i><b>2.3</b> Install Packages</a></li>
+<li class="chapter" data-level="2.4" data-path="preliminaries.html"><a href="preliminaries.html#load-libraries"><i class="fa fa-check"></i><b>2.4</b> Load libraries</a></li>
+</ul></li>
+<li class="part"><span><b>I Foundations</b></span></li>
+<li class="chapter" data-level="3" data-path="r-as-a-calculator.html"><a href="r-as-a-calculator.html"><i class="fa fa-check"></i><b>3</b> R as a Calculator</a></li>
+<li class="chapter" data-level="4" data-path="object-assignment-and-manipulation.html"><a href="object-assignment-and-manipulation.html"><i class="fa fa-check"></i><b>4</b> Object assignment and manipulation</a></li>
+<li class="chapter" data-level="5" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>5</b> Data Structures</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>5.1</b> Vectors</a></li>
+<li class="chapter" data-level="5.2" data-path="data-structures.html"><a href="data-structures.html#data-frames"><i class="fa fa-check"></i><b>5.2</b> Data Frames</a></li>
+<li class="chapter" data-level="5.3" data-path="data-structures.html"><a href="data-structures.html#lists"><i class="fa fa-check"></i><b>5.3</b> Lists</a></li>
+<li class="chapter" data-level="5.4" data-path="data-structures.html"><a href="data-structures.html#identifying-data-structures"><i class="fa fa-check"></i><b>5.4</b> Identifying Data Structures</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="writing-functions.html"><a href="writing-functions.html"><i class="fa fa-check"></i><b>6</b> Writing Functions</a></li>
+<li class="chapter" data-level="7" data-path="iteration.html"><a href="iteration.html"><i class="fa fa-check"></i><b>7</b> Iteration</a></li>
+<li class="part"><span><b>II Applied Data Research in R</b></span></li>
+<li class="chapter" data-level="8" data-path="data-transfer-part-1-reading-in-data.html"><a href="data-transfer-part-1-reading-in-data.html"><i class="fa fa-check"></i><b>8</b> Data Transfer Part 1: Reading in Data</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An R Primer for Social Scientists</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data-structures" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Data Structures<a href="data-structures.html#data-structures" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>We now turn to a brief overview of some important data structures that help us to work with data in R. We will consider three data structures that are particularly useful: vectors, data frames, and lists. Note that this is not an exhaustive treatment of data structures in R; there are other structures, such as matrices and arrays, that are also important. However, we will limit our discussion to the data structures that are essential for getting started with data-based social scientific research in R.</p>
+<div id="vectors" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Vectors<a href="data-structures.html#vectors" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In R, a vector is a sequence of values. A vector is created using the <code>c()</code> function. For example, let’s make a vector with some arbitrary numeric values:</p>
+<p>In R, a vector is a sequence of values. A vector is created using the <code>c()</code> function. For example, let’s make a vector with some arbitrary numeric values:</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="data-structures.html#cb32-1" tabindex="-1"></a><span class="co"># makes vector with values 5,7,55,32</span></span>
+<span id="cb32-2"><a href="data-structures.html#cb32-2" tabindex="-1"></a><span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">55</span>, <span class="dv">32</span>)</span></code></pre></div>
+<pre><code>## [1]  5  7 55 32</code></pre>
+<p>If we plan to work with this numeric vector again later in our workflow, it makes sense to assign it to an object, which we’ll call <code>arbitrary_values</code>:</p>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="data-structures.html#cb34-1" tabindex="-1"></a><span class="co"># assigns vector of arbitrary values to new object named &quot;arbitrary_values&quot;</span></span>
+<span id="cb34-2"><a href="data-structures.html#cb34-2" tabindex="-1"></a>arbitrary_values<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">7</span>,<span class="fl">55.6</span>,<span class="fl">32.5</span>)</span></code></pre></div>
+<p>Now, whenever we want to print the vector assigned to the <code>arbitrary_values</code> object, we can simply print the name of the object:</p>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="data-structures.html#cb35-1" tabindex="-1"></a><span class="co"># prints vector assigned to &quot;arbitrary_values&quot; object</span></span>
+<span id="cb35-2"><a href="data-structures.html#cb35-2" tabindex="-1"></a>arbitrary_values</span></code></pre></div>
+<pre><code>## [1]  5.0  7.0 55.6 32.5</code></pre>
+<p>It is possible to carry out mathematical operations with numeric vectors; for instance, let’s say that we want to double the values in the <code>arbitrary_values</code> vector; to do so, we can simply multiply <code>arbitrary_values</code> by 2, which yields a new vector where each numeric element is twice the corresponding element in <code>arbitrary_values</code>. Below, we’ll create a new vector that doubles the values in <code>arbitrary_values</code>, assign it to a new object named <code>arbitrary_values_2x</code>, and print the contents of <code>arbitrary_values_2x</code>:</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="data-structures.html#cb37-1" tabindex="-1"></a><span class="co"># creates a new vector that doubles the values in &quot;arbitrary_values&quot; and assigns it to a new object named</span></span>
+<span id="cb37-2"><a href="data-structures.html#cb37-2" tabindex="-1"></a><span class="st">&quot;arbitrary_values_2x&quot;</span></span></code></pre></div>
+<pre><code>## [1] &quot;arbitrary_values_2x&quot;</code></pre>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="data-structures.html#cb39-1" tabindex="-1"></a>arbitrary_values_2x<span class="ot">&lt;-</span>arbitrary_values<span class="sc">*</span><span class="dv">2</span></span>
+<span id="cb39-2"><a href="data-structures.html#cb39-2" tabindex="-1"></a></span>
+<span id="cb39-3"><a href="data-structures.html#cb39-3" tabindex="-1"></a><span class="co"># prints contents of &quot;arbitrary_values_2x&quot;</span></span>
+<span id="cb39-4"><a href="data-structures.html#cb39-4" tabindex="-1"></a>arbitrary_values_2x</span></code></pre></div>
+<pre><code>## [1]  10.0  14.0 111.2  65.0</code></pre>
+<p>Now, let’s say we want to add different vectors together; the code below creates a new vector by adding together <code>arbitrary_values</code> and <code>arbitrary_values_2x</code>:</p>
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="data-structures.html#cb41-1" tabindex="-1"></a><span class="co"># adds &quot;arbitrary_values&quot; vector and &quot;arbitrary_values_2x&quot; vector</span></span>
+<span id="cb41-2"><a href="data-structures.html#cb41-2" tabindex="-1"></a>arbitrary_values <span class="sc">+</span> arbitrary_values_2x</span></code></pre></div>
+<pre><code>## [1]  15.0  21.0 166.8  97.5</code></pre>
+<p>Note that each element of the resulting vector printed above is the sum of the corresponding elements in <code>arbitrary_values</code> and <code>arbitrary_values_2x</code>.</p>
+<p>Other arithmetic operations on numeric vectors are also possible, and you may wish to explore these on your own as an exercise.</p>
+<p>In many cases, it is useful to extract a specific element from a vector. Each element in a given vector is assigned an index number, starting with 1; that is, the first element in a vector is assigned an index value of 1, the second element of a vector is assigned an index value of 2, and so on. We can use these index values to extract our desired vector elements. In particular, we can specify the desired index within square brackets after printing the name of the vector object of interest. For example, let’s say we want to extract the 3rd element of the vector in <code>arbitrary_values</code>. We can do so with the following:</p>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="data-structures.html#cb43-1" tabindex="-1"></a><span class="co"># extracts third element of &quot;arbitrary_values_2x&quot; vector</span></span>
+<span id="cb43-2"><a href="data-structures.html#cb43-2" tabindex="-1"></a>arbitrary_values[<span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] 55.6</code></pre>
+<p>It is also possible to extract a range of values from a vector using index values. For example, let’s say we want to extract a new vector comprised of the second, third, and fourth numeric elements in <code>arbitrary_values</code>; we can do so with the following:</p>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="data-structures.html#cb45-1" tabindex="-1"></a><span class="co"># extracts a new vector comprised of the 2nd, 3rd, and 4th elements of the existing &quot;arbitrary_values&quot; vector</span></span>
+<span id="cb45-2"><a href="data-structures.html#cb45-2" tabindex="-1"></a>arbitrary_values[<span class="dv">2</span><span class="sc">:</span><span class="dv">4</span>]</span></code></pre></div>
+<pre><code>## [1]  7.0 55.6 32.5</code></pre>
+<p>Thus far, we have been working with numeric vectors, where each of the vector’s elements is a numeric value, but it is also possible to create vectors in which the elements are strings (i.e. text). Such vectors are know as character vectors. For example, the code below creates a character vector of the first four months of the year, and assigns it to a new object named <code>months_four</code>:</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="data-structures.html#cb47-1" tabindex="-1"></a><span class="co"># creates character vector whose elements are the first four months of the year, and assigns the vector to a new object named &quot;months_four&quot;</span></span>
+<span id="cb47-2"><a href="data-structures.html#cb47-2" tabindex="-1"></a>months_four<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;January&quot;</span>, <span class="st">&quot;February&quot;</span>, <span class="st">&quot;March&quot;</span>, <span class="st">&quot;April&quot;</span>)</span></code></pre></div>
+<p>Let’s now print the character vector assigned to <code>months_four</code>:</p>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="data-structures.html#cb48-1" tabindex="-1"></a><span class="co"># prints contents of &quot;months_four&quot;</span></span>
+<span id="cb48-2"><a href="data-structures.html#cb48-2" tabindex="-1"></a>months_four</span></code></pre></div>
+<pre><code>## [1] &quot;January&quot;  &quot;February&quot; &quot;March&quot;    &quot;April&quot;</code></pre>
+<p>We can extract elements from character vectors using index values in the same way we did so for elements in a numeric vector. For example:</p>
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="data-structures.html#cb50-1" tabindex="-1"></a><span class="co"># extracts second element of &quot;months_four&quot; object (i.e. the &quot;February&quot; string)</span></span>
+<span id="cb50-2"><a href="data-structures.html#cb50-2" tabindex="-1"></a>months_four[<span class="dv">2</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;February&quot;</code></pre>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="data-structures.html#cb52-1" tabindex="-1"></a><span class="co"># subsets the second and third elements of &quot;months_four&quot; object (i.e. the &quot;February&quot; and &quot;March&quot; strings, which are extracted as a new character vector)</span></span>
+<span id="cb52-2"><a href="data-structures.html#cb52-2" tabindex="-1"></a>months_four[<span class="dv">2</span><span class="sc">:</span><span class="dv">3</span>]</span></code></pre></div>
+<pre><code>## [1] &quot;February&quot; &quot;March&quot;</code></pre>
+</div>
+<div id="data-frames" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Data Frames<a href="data-structures.html#data-frames" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The data frame structure is the workhorse of data analysis in R. A data frame resembles a table, of the sort you might generate in a spreadsheet application.</p>
+<p>Often, the most important (and arduous) step in a data analysis workflow is to assemble disparate strands of data into a tractable data frame. What does it mean for a data frame to be “tractable”? One way to define this concept more precisely is to appeal to the concept of “tidy” data, which is <a href="https://vita.had.co.nz/papers/tidy-data.pdf">often referenced in the data science world</a>. Broadly speaking, a “tidy” data frame is a table in which:</p>
+<ol style="list-style-type: decimal">
+<li>Each variable has its own column</li>
+<li>Each observation has its own row</li>
+<li>Each value has its own cell</li>
+</ol>
+<p>We will work extensively with data frames later in the workshop, but let’s generate a simple data frame from scratch, and assign it to a new object. We will generate a data frame containing “dummy” country-level data on basic economic, geographic, and demographic variables, and assign it to a new object named <code>country_df</code>. The data frame is created through the use of the <code>data.frame()</code> function, which has already been programmed into R. Column names and the corresponding column values are passed to the <code>data.frame()</code> function in the manner below, and the function effectively binds these different columns together into a table:</p>
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="data-structures.html#cb54-1" tabindex="-1"></a><span class="co"># Creates a dummy country-level data frame </span></span>
+<span id="cb54-2"><a href="data-structures.html#cb54-2" tabindex="-1"></a>country_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">Country=</span><span class="fu">c</span>(<span class="st">&quot;Country A&quot;</span>, <span class="st">&quot;Country B&quot;</span>, <span class="st">&quot;Country C&quot;</span>),</span>
+<span id="cb54-3"><a href="data-structures.html#cb54-3" tabindex="-1"></a>                       <span class="at">GDP=</span><span class="fu">c</span>(<span class="dv">8000</span>, <span class="dv">30000</span>, <span class="dv">23500</span>),</span>
+<span id="cb54-4"><a href="data-structures.html#cb54-4" tabindex="-1"></a>                       <span class="at">Population=</span><span class="fu">c</span>(<span class="dv">2000</span>, <span class="dv">5400</span>, <span class="dv">10000</span>),</span>
+<span id="cb54-5"><a href="data-structures.html#cb54-5" tabindex="-1"></a>                       <span class="at">Continent=</span><span class="fu">c</span>(<span class="st">&quot;South America&quot;</span>, <span class="st">&quot;Europe&quot;</span>, <span class="st">&quot;North America&quot;</span>))</span></code></pre></div>
+<p>To observe the structure of the table, we can print it to the R console by simply printing the name of the object to which it has been assigned:</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="data-structures.html#cb55-1" tabindex="-1"></a><span class="co"># prints &quot;country_df&quot; data frame to console</span></span>
+<span id="cb55-2"><a href="data-structures.html#cb55-2" tabindex="-1"></a>country_df</span></code></pre></div>
+<pre><code>##     Country   GDP Population     Continent
+## 1 Country A  8000       2000 South America
+## 2 Country B 30000       5400        Europe
+## 3 Country C 23500      10000 North America</code></pre>
+<p>One nice feature of R Studio is that instead of simply printing our data frames into the console, we can view a nicely formatted version of our data frame by passing the name of the data frame object through the <code>View()</code> function. For example, the code below will bring up the <code>country_df</code> data frame as a new tab in R Studio:</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="data-structures.html#cb57-1" tabindex="-1"></a><span class="co"># pulls up &quot;country_df&quot; data frame in R Studio data viewer</span></span>
+<span id="cb57-2"><a href="data-structures.html#cb57-2" tabindex="-1"></a><span class="fu">View</span>(country_df)</span></code></pre></div>
+<div class="datatables html-widget html-fill-item" id="htmlwidget-30629a4a1b9d3fb92f8d" style="width:100%;height:auto;"></div>
+<script type="application/json" data-for="htmlwidget-30629a4a1b9d3fb92f8d">{"x":{"filter":"none","vertical":false,"extensions":["Scroller","FixedColumns"],"data":[["1","2","3"],["Country A","Country B","Country C"],[8000,30000,23500],[2000,5400,10000],["South America","Europe","North America"]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th> <\/th>\n      <th>Country<\/th>\n      <th>GDP<\/th>\n      <th>Population<\/th>\n      <th>Continent<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"deferRender":true,"scrollY":350,"scrollX":350,"dom":"t","scroller":true,"fixedColumns":{"leftColumns":3},"columnDefs":[{"className":"dt-right","targets":[2,3]},{"orderable":false,"targets":0},{"name":" ","targets":0},{"name":"Country","targets":1},{"name":"GDP","targets":2},{"name":"Population","targets":3},{"name":"Continent","targets":4}],"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<p>Note the “tidy” features of this simple data frame:</p>
+<ol style="list-style-type: decimal">
+<li>Each of the variables (i.e. GDP, Population, Continent) has its own column</li>
+<li>Each of the (country-level) observations has its own row</li>
+<li>Each of the values (i.e. country-level information about a given variable) has its own distinct cell</li>
+</ol>
+<p>We will explore data frames, and the process of extracting information from them, at greater length in subsequent sections.</p>
+</div>
+<div id="lists" class="section level2 hasAnchor" number="5.3">
+<h2><span class="header-section-number">5.3</span> Lists<a href="data-structures.html#lists" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In R, a list is a data structure that allows us to conveniently store a variety of different objects, of various types. For example, we can use a list to vectors, data frames, visualizations and graphs–basically any R object you can think of! It is also possible to store a list within a list.</p>
+<p>Lists allow us to keep track of the various objects we create, and are therefore a useful data management tool. In addition, lists are very helpful to use when we want to perform iterative operations across multiple objects.</p>
+<p>We can create lists in R using the <code>list()</code> function; the arguments to this function are the objects that we want to include in the list. In the code below, we’ll create a list (assigned to an object named <code>example_list</code>) that contains some of the objects we create earlier in the lesson: the <code>arbitrary_values</code> vector, the <code>months_four</code> vector, and the <code>country_df</code> data frame.</p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="data-structures.html#cb58-1" tabindex="-1"></a><span class="co"># creates list whose elements are the &quot;arbitrary_values&quot; numeric vector, the &quot;months_four&quot; character vector, and the &quot;country_df&quot; data frame, and assigns it to a new object named &quot;example_list&quot;</span></span>
+<span id="cb58-2"><a href="data-structures.html#cb58-2" tabindex="-1"></a>example_list<span class="ot">&lt;-</span><span class="fu">list</span>(arbitrary_values, months_four, country_df)</span></code></pre></div>
+<p>Now that we’ve created our list object, let’s print out its contents:</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="data-structures.html#cb59-1" tabindex="-1"></a><span class="co"># prints contents of &quot;example_list&quot;</span></span>
+<span id="cb59-2"><a href="data-structures.html#cb59-2" tabindex="-1"></a>example_list</span></code></pre></div>
+<pre><code>## [[1]]
+## [1]  5.0  7.0 55.6 32.5
+## 
+## [[2]]
+## [1] &quot;January&quot;  &quot;February&quot; &quot;March&quot;    &quot;April&quot;   
+## 
+## [[3]]
+##     Country   GDP Population     Continent
+## 1 Country A  8000       2000 South America
+## 2 Country B 30000       5400        Europe
+## 3 Country C 23500      10000 North America</code></pre>
+<p>As you can see, our list contains each of the various specified objects within a single, unified structure. We can access specific elements within a list using the specific index number of the desired element, in much the same way we did for vectors. When extracting a single list element from a list, the convention is to enclose the index number of the desired list element in double square brackets. For example, if we want to extract the country-level data frame from <code>example_list</code>, we can use the following:</p>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="data-structures.html#cb61-1" tabindex="-1"></a><span class="co"># extracts country-level data frame from &quot;example_list&quot;; the country-level data frame is the third element in &quot;example_list&quot;</span></span>
+<span id="cb61-2"><a href="data-structures.html#cb61-2" tabindex="-1"></a>example_list[[<span class="dv">3</span>]]</span></code></pre></div>
+<pre><code>##     Country   GDP Population     Continent
+## 1 Country A  8000       2000 South America
+## 2 Country B 30000       5400        Europe
+## 3 Country C 23500      10000 North America</code></pre>
+<p>If we want to subset a list, and extract more than one list element as a separate list, we can do so by creating a vector of the index values of the desired elements, and enclosing it in single brackets after the name of the list object. For example, if we wanted to generate a new list that contained only the first and third elements of <code>example_list</code> (the numeric vector of arbitrary values and the data frame), we would use the following syntax:</p>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="data-structures.html#cb63-1" tabindex="-1"></a>example_list[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</span></code></pre></div>
+<pre><code>## [[1]]
+## [1]  5.0  7.0 55.6 32.5
+## 
+## [[2]]
+##     Country   GDP Population     Continent
+## 1 Country A  8000       2000 South America
+## 2 Country B 30000       5400        Europe
+## 3 Country C 23500      10000 North America</code></pre>
+<p>While list elements are not automatically named, we can name our list element using the <code>names()</code> function. The first step to define a character vector of desired names. We can specify any names we’d like but for the sake of illustration, let’s say we want to name the first list element “element1”, the second list element “element2”, and the third list element “element3”. Let’s create a vector of our desired names, and assign it to an object named <code>name_vector</code>:</p>
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="data-structures.html#cb65-1" tabindex="-1"></a><span class="co"># creates a character vector of desired names for list elements, and assigns it to a new object named &quot;name_vector&quot;</span></span>
+<span id="cb65-2"><a href="data-structures.html#cb65-2" tabindex="-1"></a>name_vector<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">&quot;element1&quot;</span>, <span class="st">&quot;element2&quot;</span>, <span class="st">&quot;element3&quot;</span>)</span></code></pre></div>
+<p>Now, we’ll assign these names in <code>name_vector</code> to the list elements in <code>example_list</code> with the following</p>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="data-structures.html#cb66-1" tabindex="-1"></a><span class="co"># assigns names from &quot;name_vector&quot; to list elements in &quot;example_list&quot;</span></span>
+<span id="cb66-2"><a href="data-structures.html#cb66-2" tabindex="-1"></a><span class="fu">names</span>(example_list)<span class="ot">&lt;-</span>name_vector</span></code></pre></div>
+<p>Let’s now print the contents of <code>example_list</code>:</p>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="data-structures.html#cb67-1" tabindex="-1"></a><span class="co"># prints contents of &quot;example_list&quot;</span></span>
+<span id="cb67-2"><a href="data-structures.html#cb67-2" tabindex="-1"></a>example_list</span></code></pre></div>
+<pre><code>## $element1
+## [1]  5.0  7.0 55.6 32.5
+## 
+## $element2
+## [1] &quot;January&quot;  &quot;February&quot; &quot;March&quot;    &quot;April&quot;   
+## 
+## $element3
+##     Country   GDP Population     Continent
+## 1 Country A  8000       2000 South America
+## 2 Country B 30000       5400        Europe
+## 3 Country C 23500      10000 North America</code></pre>
+<p>Note that the list elements now have names attached to them; the first character string in <code>name_vector</code> is assigned as the name of the first element in <code>example_list</code>, the second character string in <code>name_vector</code> is assigned as the name of the second element in <code>example_list</code>, and so on.</p>
+<p>Practically speaking, we can now extract list elements using the assigned names. For example, if we want to extract the data frame from <code>example_list</code>, we could do so by its assigned name (“element3”), as follows:</p>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="data-structures.html#cb69-1" tabindex="-1"></a><span class="co"># Extracts the data frame from &quot;example_list&quot; by its assigned name</span></span>
+<span id="cb69-2"><a href="data-structures.html#cb69-2" tabindex="-1"></a>example_list[[<span class="st">&quot;element3&quot;</span>]]</span></code></pre></div>
+<pre><code>##     Country   GDP Population     Continent
+## 1 Country A  8000       2000 South America
+## 2 Country B 30000       5400        Europe
+## 3 Country C 23500      10000 North America</code></pre>
+<p>Note that even after assigning names to list elements, you can still extract elements by their index value, if you would prefer to do so:</p>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="data-structures.html#cb71-1" tabindex="-1"></a><span class="co"># # Extracts the &quot;element3&quot; data frame from &quot;example_list&quot; by its index number</span></span>
+<span id="cb71-2"><a href="data-structures.html#cb71-2" tabindex="-1"></a>example_list[[<span class="dv">3</span>]]</span></code></pre></div>
+<pre><code>##     Country   GDP Population     Continent
+## 1 Country A  8000       2000 South America
+## 2 Country B 30000       5400        Europe
+## 3 Country C 23500      10000 North America</code></pre>
+</div>
+<div id="identifying-data-structures" class="section level2 hasAnchor" number="5.4">
+<h2><span class="header-section-number">5.4</span> Identifying Data Structures<a href="data-structures.html#identifying-data-structures" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>It is useful to be able to quickly identify the data structure of a given object. Indeed, one way that things can go wrong when processing or analyzing data in R is that a given function expects a certain type of data structure as an input, but encounters something else, which will cause the function to throw an error or perform unexpectedly. In such circumstances, it is especially useful to be able to quickly double-check the data structure of a given object.</p>
+<p>We can quickly ascertain this information by passing a given object as an argument to the <code>class()</code> function, which will provide information about the object’s data structure.</p>
+<p>For example, let’s say we want to confirm that <code>example_list</code> is indeed a list:</p>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb73-1"><a href="data-structures.html#cb73-1" tabindex="-1"></a><span class="co"># print the data structure of the &quot;example_list&quot; object</span></span>
+<span id="cb73-2"><a href="data-structures.html#cb73-2" tabindex="-1"></a><span class="fu">class</span>(example_list)</span></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<p>Let’s take another example:</p>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb75-1"><a href="data-structures.html#cb75-1" tabindex="-1"></a><span class="co"># print the data structure of the &quot;months_four&quot; object</span></span>
+<span id="cb75-2"><a href="data-structures.html#cb75-2" tabindex="-1"></a><span class="fu">class</span>(months_four)</span></code></pre></div>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<p>Note that we can read “character”, as “character vector”.</p>
+<p>Similarly, we can read “numeric” as “numeric vector”:</p>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb77-1"><a href="data-structures.html#cb77-1" tabindex="-1"></a><span class="co"># print the data structure of the &quot;arbitrary_values&quot; object</span></span>
+<span id="cb77-2"><a href="data-structures.html#cb77-2" tabindex="-1"></a><span class="fu">class</span>(arbitrary_values)</span></code></pre></div>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="object-assignment-and-manipulation.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="writing-functions.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/aranganath24/IBS_CRDDS_Rworkshop/edit/main/03-foundations.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/aranganath24/IBS_CRDDS_Rworkshop/blob/main/03-foundations.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

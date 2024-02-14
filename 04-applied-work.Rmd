@@ -1,0 +1,6 @@
+# (PART) Applied Data Research in R {-}
+
+# Data Transfer Part 1: Reading in Data
+
+Typically, the first step when working with research data in R Studio is to load your relevant data into memory. There are many ways to do this, and the precise way in which you will do so will depend on where your data is stored, and how it is structured. Below, we'll cover the process of reading your data into R Studio under a couple of different scenarios. 
+
