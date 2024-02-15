@@ -103,6 +103,8 @@ Now, let's go ahead and load the remainder of the packages that we'll need:
 library(psych)
 library(fastDummies)
 library(janitor)
+library(stargazer)
+library(gtsummary)
 ```
 
 At this point, the packages are loaded and ready to go! One important thing to note regarding the installation and loading of packages is that we only have to install packages once; after a package is installed, there is no need to subsequently reinstall it. However, we must load the packages we need (using the ```library``` function) every time we open a new R session. In other words, if we were to close RStudio at this point and open it up later, we would **not** need to install these packages again, but **would** need to load the packages again.  
@@ -113,6 +115,9 @@ library(fastDummies)
 library(janitor)
 library(tidyverse)
 library(DT)
+library(stargazer)
+library(gtsummary)
+library(ggeffects)
 ```
 
 

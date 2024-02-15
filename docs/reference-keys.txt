@@ -34,3 +34,14 @@ subsetting-variables
 exploratory-visualization
 bar-charts
 scatterplots
+elementary-data-analysis
+computing-correlations
+computing-correlations-between-two-variables-in-a-dataset
+generating-and-exporting-a-correlation-matrix
+basic-regression-analysis
+working-with-categorical-variables-in-a-regression-model
+working-with-categorical-variables-using-factors
+working-with-categorical-variables-by-creating-dummy-variables
+working-with-interaction-terms-in-regression-models
+plotting-marginal-effects
+creating-and-exporting-regression-tables
