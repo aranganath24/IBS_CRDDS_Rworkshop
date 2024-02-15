@@ -737,6 +737,80 @@ cgexp_africa_ascending_inverted
 
 ## Scatterplots
 
+The syntax to make a scatterplot is fairly similar to the syntax used to create a bar chart; the main difference is that instead of using the ```geom_col()``` function to indicate that we want a bar chart, we use the ```geom_point()``` function to indicate that we want a scatterplot. The code below generates a scatterplot of the "cgexp" variable (on the x axis) and the "trade" variable (on the y-axis) for all observations in the ```pt_copy``` dataset, and assigns it to a new object named ```scatter_cgexp_trade```:
+
+
+```{r}
+# Creates scatterplot with "cgexp" variable on x-axis and "trade" variiable on y-axis and assigns to object named "scatter_cgexp_trade"
+scatter_cgexp_trade<-
+  ggplot(pt_copy)+
+  geom_point(aes(x=cgexp, y=trade))+
+  labs(title="Trade Share of GDP \nas a function of\n Central Govt Expenditure (1990-1998 Average) ", 
+       x="Central Government Expenditure (Pct of GDP)", y="Overall Trade (Pct of GDP)")+
+  theme(plot.title=element_text(hjust=0.5)) 
+```
+
+Let's see what ```scatter_cgexp_trade``` looks like:
+
+```{r}
+# prints contents of "scatter_cgexp_trade"
+scatter_cgexp_trade
+```
+
+Sometimes, you may wish to distinguish between different groups in a scatterplot. One way to do that is to assign different colors to different groups of interest. For example, if we wanted to distinguish continents in the scatterplot, we could specify ```color=continent``` in the aesthetic mapping. The code below does so, and assigns the result to a new object named ```scatter_cgexp_trade_grouped```:
+
+```{r}
+# Creates scatterplot with "cgexp" variable on x-axis and "trade" variable on y-axis, and uses different color points for different continents; plot is assigned to object named "scatter_cgexp_trade_grouped"
+scatter_cgexp_trade_grouped<-
+  ggplot(pt_copy)+
+  geom_point(aes(x=cgexp, y=trade, color=continent))+
+  labs(title="Trade Share of GDP \nas a function of\n Central Govt Expenditure (1990-1998 Average) ", 
+       x="Central Government Expenditure (Pct of GDP)", y="Overall Trade (Pct of GDP)")+
+  theme(plot.title=element_text(hjust=0.5)) 
+
+```
+
+Let's see what ```scatter_cgexp_trade_grouped``` looks like:
+
+```{r}
+# prints contents of "scatter_cgexp_trade_grouped"
+scatter_cgexp_trade_grouped
+```
+
+An alternative way of parsing categories is to use facets, which create separate visualizations for each of the different categories in a dataset. Below, for example, we create separate scatterplots for each continent (this is specified by the final line in the code, ```facet_wrap(~continent, nrow=2))```:
+
+
+```{r}
+# Creates continent-level subplots for scatterplot, using facets; assigns plot to new object named "scatter_cgexp_trade_facets"
+scatter_cgexp_trade_facets<-
+  ggplot(pt_copy) + 
+  geom_point(aes(x = cgexp, y = trade)) + 
+  facet_wrap(~ continent, nrow = 2)
+```
+
+```{r}
+# prints contents of "scatter_cgexp_trade_facets"
+scatter_cgexp_trade_facets
+```
+
+Finally, it's important to note that it's possible to layer different geometries over each other. For example, the code below plots a scatterplot for the ```pt_copy``` dataset with the "cgexp" variable on the x axis and the trade variable on the y-axis, but also plots a line of best fit on top of the scatterplot with ```geom_smooth(aes(x=cgexp, y=trade), method="lm")```; we'll assign the resulting plot to ```scatter_cgexp_trade_line```:
+
+```{r, fig.cap="test"}
+# Creates scatterplot with "cgexp" variable on x-axis and "trade" variiable on y-axis, adds line of best fit; plot assigned to object named "scatter_cgexp_trade_line"
+scatter_cgexp_trade_line<-
+  ggplot(pt_copy)+
+  geom_point(aes(x=cgexp, y=trade))+
+  geom_smooth(aes(x=cgexp, y=trade), method="lm")+
+  labs(title="Trade Share of GDP \nas a function of\n Central Govt Expenditure (1990-1998 Average) ", 
+       x="Central Government Expenditure (Pct of GDP)", y="Overall Trade (Pct of GDP)")+
+  theme(plot.title=element_text(hjust=0.5)) 
+
+```
+
+```{r}
+# Prints contents of "scatter_cgexp_trade_line"
+scatter_cgexp_trade_line
+```
 
 
 
