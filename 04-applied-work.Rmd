@@ -960,5 +960,19 @@ stargazer(model_list, type="text", out="cgexp_regressions.txt")
 stargazer(model_list, type="html", out="cgexp_regressions.html")
 ```
 
+# Working with multiple datasets
+
+## Merging data 
+
+## Automating data processing tasks
+
+# Data Transfer Part 2: Exporting data
+
+## Exporting a data frame
+
+## Exporting multiple data frames
+
+## Exporting other objects (i.e. visualizations)
+
 
 

@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="exploratory-visualization.html"/>
-
+<link rel="next" href="working-with-multiple-datasets.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -219,6 +219,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="11.5" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#creating-and-exporting-regression-tables"><i class="fa fa-check"></i><b>11.5</b> Creating and exporting regression tables</a></li>
 </ul></li>
+<li class="chapter" data-level="12" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html"><i class="fa fa-check"></i><b>12</b> Working with multiple datasets</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#merging-data"><i class="fa fa-check"></i><b>12.1</b> Merging data</a></li>
+<li class="chapter" data-level="12.2" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#automating-data-processing-tasks"><i class="fa fa-check"></i><b>12.2</b> Automating data processing tasks</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html"><i class="fa fa-check"></i><b>13</b> Data Transfer Part 2: Exporting data</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html#exporting-a-data-frame"><i class="fa fa-check"></i><b>13.1</b> Exporting a data frame</a></li>
+<li class="chapter" data-level="13.2" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html#exporting-multiple-data-frames"><i class="fa fa-check"></i><b>13.2</b> Exporting multiple data frames</a></li>
+<li class="chapter" data-level="13.3" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html#exporting-other-objects-i.e.-visualizations"><i class="fa fa-check"></i><b>13.3</b> Exporting other objects (i.e. visualizations)</a></li>
+</ul></li>
+<li class="part"><span><b>III Replication Exercise in R</b></span></li>
+<li class="chapter" data-level="14" data-path="replication-exercise-overview.html"><a href="replication-exercise-overview.html"><i class="fa fa-check"></i><b>14</b> Replication Exercise Overview</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -474,7 +487,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb236-2"><a href="elementary-data-analysis.html#cb236-2" tabindex="-1"></a><span class="fu">stargazer</span>(model_list, <span class="at">type=</span><span class="st">&quot;text&quot;</span>, <span class="at">out=</span><span class="st">&quot;cgexp_regressions.txt&quot;</span>)</span></code></pre></div>
 <div class="sourceCode" id="cb237"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb237-1"><a href="elementary-data-analysis.html#cb237-1" tabindex="-1"></a><span class="co"># Exporting regression table as html file</span></span>
 <span id="cb237-2"><a href="elementary-data-analysis.html#cb237-2" tabindex="-1"></a><span class="fu">stargazer</span>(model_list, <span class="at">type=</span><span class="st">&quot;html&quot;</span>, <span class="at">out=</span><span class="st">&quot;cgexp_regressions.html&quot;</span>)</span></code></pre></div>
-
 </div>
 </div>
             </section>
@@ -482,8 +494,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="exploratory-visualization.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="exploratory-visualization.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="working-with-multiple-datasets.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

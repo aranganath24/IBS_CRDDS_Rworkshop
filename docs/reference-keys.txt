@@ -45,3 +45,11 @@ working-with-categorical-variables-by-creating-dummy-variables
 working-with-interaction-terms-in-regression-models
 plotting-marginal-effects
 creating-and-exporting-regression-tables
+working-with-multiple-datasets
+merging-data
+automating-data-processing-tasks
+data-transfer-part-2-exporting-data
+exporting-a-data-frame
+exporting-multiple-data-frames
+exporting-other-objects-i.e.-visualizations
+replication-exercise-overview
