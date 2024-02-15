@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>10 Exploratory Visualization | An R Primer for Social Scientists</title>
+  <meta name="description" content="10 Exploratory Visualization | An R Primer for Social Scientists" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="10 Exploratory Visualization | An R Primer for Social Scientists" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="10 Exploratory Visualization | An R Primer for Social Scientists" />
+  
+  
+  
+
+<meta name="author" content="Aditya Ranganath" />
+
+
+<meta name="date" content="2024-02-15" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="numeric-data-summarizing-processing-and-wrangling-tasks.html"/>
+
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<link href="libs/datatables-css-0.0.0/datatables-crosstalk.css" rel="stylesheet" />
+<script src="libs/datatables-binding-0.31/datatables.js"></script>
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="libs/dt-core-1.13.6/css/jquery.dataTables.extra.css" rel="stylesheet" />
+<script src="libs/dt-core-1.13.6/js/jquery.dataTables.min.js"></script>
+<link href="libs/dt-ext-scroller-1.13.6/css/scroller.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-scroller-1.13.6/js/dataTables.scroller.min.js"></script>
+<link href="libs/dt-ext-fixedcolumns-1.13.6/css/fixedColumns.dataTables.min.css" rel="stylesheet" />
+<script src="libs/dt-ext-fixedcolumns-1.13.6/js/dataTables.fixedColumns.min.js"></script>
+<link href="libs/crosstalk-1.2.1/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.1/js/crosstalk.min.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">R Primer</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="preliminaries.html"><a href="preliminaries.html"><i class="fa fa-check"></i><b>2</b> Preliminaries</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="preliminaries.html"><a href="preliminaries.html#r-and-rstudio-installation"><i class="fa fa-check"></i><b>2.1</b> R and RStudio Installation</a></li>
+<li class="chapter" data-level="2.2" data-path="preliminaries.html"><a href="preliminaries.html#the-rstudio-interface"><i class="fa fa-check"></i><b>2.2</b> The RStudio Interface</a></li>
+<li class="chapter" data-level="2.3" data-path="preliminaries.html"><a href="preliminaries.html#install-packages"><i class="fa fa-check"></i><b>2.3</b> Install Packages</a></li>
+<li class="chapter" data-level="2.4" data-path="preliminaries.html"><a href="preliminaries.html#load-libraries"><i class="fa fa-check"></i><b>2.4</b> Load libraries</a></li>
+</ul></li>
+<li class="part"><span><b>I Foundations</b></span></li>
+<li class="chapter" data-level="3" data-path="r-as-a-calculator.html"><a href="r-as-a-calculator.html"><i class="fa fa-check"></i><b>3</b> R as a Calculator</a></li>
+<li class="chapter" data-level="4" data-path="object-assignment-and-manipulation.html"><a href="object-assignment-and-manipulation.html"><i class="fa fa-check"></i><b>4</b> Object assignment and manipulation</a></li>
+<li class="chapter" data-level="5" data-path="data-structures.html"><a href="data-structures.html"><i class="fa fa-check"></i><b>5</b> Data Structures</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="data-structures.html"><a href="data-structures.html#vectors"><i class="fa fa-check"></i><b>5.1</b> Vectors</a></li>
+<li class="chapter" data-level="5.2" data-path="data-structures.html"><a href="data-structures.html#data-frames"><i class="fa fa-check"></i><b>5.2</b> Data Frames</a></li>
+<li class="chapter" data-level="5.3" data-path="data-structures.html"><a href="data-structures.html#lists"><i class="fa fa-check"></i><b>5.3</b> Lists</a></li>
+<li class="chapter" data-level="5.4" data-path="data-structures.html"><a href="data-structures.html#identifying-data-structures"><i class="fa fa-check"></i><b>5.4</b> Identifying Data Structures</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="writing-functions.html"><a href="writing-functions.html"><i class="fa fa-check"></i><b>6</b> Writing Functions</a></li>
+<li class="chapter" data-level="7" data-path="iteration.html"><a href="iteration.html"><i class="fa fa-check"></i><b>7</b> Iteration</a></li>
+<li class="part"><span><b>II Applied Data Research in R</b></span></li>
+<li class="chapter" data-level="8" data-path="data-transfer-part-1-importing-data-into-r-studio.html"><a href="data-transfer-part-1-importing-data-into-r-studio.html"><i class="fa fa-check"></i><b>8</b> Data Transfer Part 1: Importing Data into R Studio</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="data-transfer-part-1-importing-data-into-r-studio.html"><a href="data-transfer-part-1-importing-data-into-r-studio.html#reading-in-a-dataset-from-a-directory-on-your-computer"><i class="fa fa-check"></i><b>8.1</b> Reading in a dataset from a directory on your computer</a></li>
+<li class="chapter" data-level="8.2" data-path="data-transfer-part-1-importing-data-into-r-studio.html"><a href="data-transfer-part-1-importing-data-into-r-studio.html#reading-in-multiple-datasets-from-your-disk"><i class="fa fa-check"></i><b>8.2</b> Reading in multiple datasets from your disk</a></li>
+<li class="chapter" data-level="8.3" data-path="data-transfer-part-1-importing-data-into-r-studio.html"><a href="data-transfer-part-1-importing-data-into-r-studio.html#reading-in-a-dataset-from-cloud-storage"><i class="fa fa-check"></i><b>8.3</b> Reading in a dataset from cloud storage</a></li>
+<li class="chapter" data-level="8.4" data-path="data-transfer-part-1-importing-data-into-r-studio.html"><a href="data-transfer-part-1-importing-data-into-r-studio.html#reading-in-data-from-an-r-package"><i class="fa fa-check"></i><b>8.4</b> Reading in data from an R package</a></li>
+<li class="chapter" data-level="8.5" data-path="data-transfer-part-1-importing-data-into-r-studio.html"><a href="data-transfer-part-1-importing-data-into-r-studio.html#reading-in-data-from-a-website"><i class="fa fa-check"></i><b>8.5</b> Reading in data from a website</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html"><i class="fa fa-check"></i><b>9</b> Numeric Data Summarizing, Processing and Wrangling Tasks</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#summary-statistics"><i class="fa fa-check"></i><b>9.1</b> Summary Statistics</a></li>
+<li class="chapter" data-level="9.2" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#basic-data-cleaning-and-preparation-tasks"><i class="fa fa-check"></i><b>9.2</b> Basic Data Cleaning and Preparation Tasks</a>
+<ul>
+<li class="chapter" data-level="9.2.1" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#rearranging-columns"><i class="fa fa-check"></i><b>9.2.1</b> Rearranging Columns</a></li>
+<li class="chapter" data-level="9.2.2" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#renaming-variables"><i class="fa fa-check"></i><b>9.2.2</b> Renaming Variables</a></li>
+<li class="chapter" data-level="9.2.3" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#sorting-a-dataset-in-ascending-or-descending-order-with-respect-to-a-variable"><i class="fa fa-check"></i><b>9.2.3</b> Sorting a dataset in ascending or descending order with respect to a variable</a></li>
+<li class="chapter" data-level="9.2.4" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#creating-new-variables-based-on-existing-variables"><i class="fa fa-check"></i><b>9.2.4</b> Creating new variables based on existing variables</a></li>
+<li class="chapter" data-level="9.2.5" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#selecting-or-deleting-variables"><i class="fa fa-check"></i><b>9.2.5</b> Selecting or Deleting Variables</a></li>
+<li class="chapter" data-level="9.2.6" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#recoding-variables"><i class="fa fa-check"></i><b>9.2.6</b> Recoding Variables</a></li>
+<li class="chapter" data-level="9.2.7" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#subsetting-variables"><i class="fa fa-check"></i><b>9.2.7</b> Subsetting Variables</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="exploratory-visualization.html"><a href="exploratory-visualization.html"><i class="fa fa-check"></i><b>10</b> Exploratory Visualization</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="exploratory-visualization.html"><a href="exploratory-visualization.html#bar-charts"><i class="fa fa-check"></i><b>10.1</b> Bar Charts</a></li>
+<li class="chapter" data-level="10.2" data-path="exploratory-visualization.html"><a href="exploratory-visualization.html#scatterplots"><i class="fa fa-check"></i><b>10.2</b> Scatterplots</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An R Primer for Social Scientists</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="exploratory-visualization" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">10</span> Exploratory Visualization<a href="exploratory-visualization.html#exploratory-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>R has a number of powerful visualization capabilities, but one of the most frequently used tools for data visualization in R is the <em>ggplot2</em> package, which is a part of the <em>tidyverse</em> suite. Data visualization using <em>ggplot2</em> is a vast topic; our goal here is to provide you with some basic intuition for how ggplot visualizations are constructed by developing some basic exploratory visualizations. While our treatment here focuses on bar charts and scatterplots, <em>ggplot</em> offers functions for a much wider variety of visualizations. However, bar charts and scatterplots offer a convenient way to familiarize yourself with basic <em>ggplot</em> syntax.</p>
+<div id="bar-charts" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Bar Charts<a href="exploratory-visualization.html#bar-charts" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Let’s make some simple bar charts for the African countries in <code>pt_copy</code>. Let’s say we want to make a bar chart that displays variation in the “cgexp” variable (central government expenditure as a share of GDP) for African countries. We’ll begin by extracting the Africa observations from <code>pt_copy</code> using the <code>filter()</code> function, and removing any “NA” observations for this variable from the dataset using the <code>drop_na()</code> function:</p>
+<div class="sourceCode" id="cb183"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb183-1"><a href="exploratory-visualization.html#cb183-1" tabindex="-1"></a><span class="co"># filters Africa observations</span></span>
+<span id="cb183-2"><a href="exploratory-visualization.html#cb183-2" tabindex="-1"></a>pt_africa<span class="ot">&lt;-</span>pt_copy <span class="sc">%&gt;%</span> </span>
+<span id="cb183-3"><a href="exploratory-visualization.html#cb183-3" tabindex="-1"></a>            <span class="fu">filter</span>(continent<span class="sc">==</span><span class="st">&quot;africa&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb183-4"><a href="exploratory-visualization.html#cb183-4" tabindex="-1"></a>            <span class="fu">drop_na</span>(cgexp)</span></code></pre></div>
+<p>Now, let’s make a basic bar chart of the “cgexp” data from <code>pt_africa</code>, and assign it to an object named <code>cgexp_africa</code>:</p>
+<div class="sourceCode" id="cb184"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb184-1"><a href="exploratory-visualization.html#cb184-1" tabindex="-1"></a><span class="co"># Creates a bar chart of the &quot;cgexp&quot; variable (central government expenditure as a share of GDP) for the Africa observations and assigns the plot to an object named &quot;cgexp_africa&quot;</span></span>
+<span id="cb184-2"><a href="exploratory-visualization.html#cb184-2" tabindex="-1"></a>cgexp_africa<span class="ot">&lt;-</span></span>
+<span id="cb184-3"><a href="exploratory-visualization.html#cb184-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(pt_africa)<span class="sc">+</span></span>
+<span id="cb184-4"><a href="exploratory-visualization.html#cb184-4" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">x=</span>country, <span class="at">y=</span>cgexp))<span class="sc">+</span></span>
+<span id="cb184-5"><a href="exploratory-visualization.html#cb184-5" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb184-6"><a href="exploratory-visualization.html#cb184-6" tabindex="-1"></a>    <span class="at">title=</span><span class="st">&quot;Central Govt Expenditure as Pct of GDP for Select African Countries (1990-1998 Average)&quot;</span>,</span>
+<span id="cb184-7"><a href="exploratory-visualization.html#cb184-7" tabindex="-1"></a>    <span class="at">x=</span><span class="st">&quot;Country Name&quot;</span>, </span>
+<span id="cb184-8"><a href="exploratory-visualization.html#cb184-8" tabindex="-1"></a>    <span class="at">y=</span><span class="st">&quot;CGEXP&quot;</span>)<span class="sc">+</span></span>
+<span id="cb184-9"><a href="exploratory-visualization.html#cb184-9" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>),</span>
+<span id="cb184-10"><a href="exploratory-visualization.html#cb184-10" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>))</span></code></pre></div>
+<p>Let’s unpack the code above:</p>
+<ul>
+<li>The expression <code>ggplot(pt_africa)</code> specifies that we want to initialize <em>ggplot</em>, and declares the dataset containing the data we want to map (“pt_africa”)</li>
+<li><code>geom_col()</code> indicates that we want to make a bar chart. If you wanted to make a different type of chart, this function would be different. Within the <code>geom_col()</code> function, we indicate our desired aesthetic mapping <code>aes()</code>; an aesthetic mapping indicates how we would like variables in the datasets to be represented on the chosen visualization. Here, the expression <code>x=country, y=cgexp</code> simply indicates that we want countries to be represented on the x-axis of the chart, and the “cgexp” variable to be represented on the y-axis.</li>
+<li>The arguments to the <code>labs()</code> function (short for “labels”) specify a desired title for the visualization, and x-axis and y-axis labels.</li>
+<li>The arguments to the <code>theme()</code> function specify a desired position for the plot title, and a desired format for the x-axis labels.</li>
+</ul>
+<p>Note that <em>ggplot2</em> functions are chained together with a “+” sign.</p>
+<p>Let’s see what <code>cgexp_africa</code> looks like:</p>
+<div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="exploratory-visualization.html#cb185-1" tabindex="-1"></a><span class="co"># prints contents of cgexp_africa</span></span>
+<span id="cb185-2"><a href="exploratory-visualization.html#cb185-2" tabindex="-1"></a>cgexp_africa</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
+<p>This is a nice start, but it may look a bit cleaner if we arrayed the chart in ascending order with respect to the cgexp variable. To do so, we can slightly change our aesthetic mapping to look like this: <code>aes(x=reorder(country, cgexp), y=cgexp))</code>. This indicates that we’d still like the “cgexp” variable on the y-axis, and countries on the x-axis; however, we’d also like to order countries in ascending order with respect to the “cgexp” variable. We’ll assign this modified chart to a new object named <code>cgexp_africa_ascending</code>:</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="exploratory-visualization.html#cb186-1" tabindex="-1"></a><span class="co"># Creates a bar chart of the &quot;cgexp&quot; variable (central government expenditure as a share of GDP) for the Africa observations; countries are on the x axis and arrayed in ascending order with respect to the cgexp variable, which is on the y-axis; plot is assigned to an object named &quot;cgexp_africa_ascending&quot;</span></span>
+<span id="cb186-2"><a href="exploratory-visualization.html#cb186-2" tabindex="-1"></a>cgexp_africa_ascending<span class="ot">&lt;-</span></span>
+<span id="cb186-3"><a href="exploratory-visualization.html#cb186-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(pt_africa)<span class="sc">+</span></span>
+<span id="cb186-4"><a href="exploratory-visualization.html#cb186-4" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(country, cgexp), <span class="at">y=</span>cgexp))<span class="sc">+</span></span>
+<span id="cb186-5"><a href="exploratory-visualization.html#cb186-5" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb186-6"><a href="exploratory-visualization.html#cb186-6" tabindex="-1"></a>    <span class="at">title=</span><span class="st">&quot;Central Govt Expenditure as Pct of GDP for Select African Countries (1990-1998 Average)&quot;</span>,</span>
+<span id="cb186-7"><a href="exploratory-visualization.html#cb186-7" tabindex="-1"></a>    <span class="at">x=</span><span class="st">&quot;Country Name&quot;</span>, </span>
+<span id="cb186-8"><a href="exploratory-visualization.html#cb186-8" tabindex="-1"></a>    <span class="at">y=</span><span class="st">&quot;CGEXP&quot;</span>)<span class="sc">+</span></span>
+<span id="cb186-9"><a href="exploratory-visualization.html#cb186-9" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>),</span>
+<span id="cb186-10"><a href="exploratory-visualization.html#cb186-10" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>))</span></code></pre></div>
+<p>All other apsects of the code are the same as before. Let’s see what the modified chart looks like:</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="exploratory-visualization.html#cb187-1" tabindex="-1"></a><span class="co"># prints &quot;cgexp_africa_ascending&quot;</span></span>
+<span id="cb187-2"><a href="exploratory-visualization.html#cb187-2" tabindex="-1"></a>cgexp_africa_ascending</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-145-1.png" width="672" /></p>
+<p>If, instead of arrange the countries in asscending order with respect to the “cgexp” variable, we want to arrange them in descending order, we can simply put a “-” before “cgexp” within the aesthetic mapping; we’ll assign the modified chart to a new object named <code>cgexp_africa_descending</code>:</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="exploratory-visualization.html#cb188-1" tabindex="-1"></a><span class="co"># Creates a bar chart of the &quot;cgexp&quot; variable (central government expenditure as a share of GDP) for the Africa observations; countries are on the x axis and arrayed in descending order with respect to the cgexp variable, which is on the y-axis; plot is assigned to an object named &quot;cgexp_africa_descending&quot;</span></span>
+<span id="cb188-2"><a href="exploratory-visualization.html#cb188-2" tabindex="-1"></a>cgexp_africa_descending<span class="ot">&lt;-</span></span>
+<span id="cb188-3"><a href="exploratory-visualization.html#cb188-3" tabindex="-1"></a>  <span class="fu">ggplot</span>(pt_africa)<span class="sc">+</span></span>
+<span id="cb188-4"><a href="exploratory-visualization.html#cb188-4" tabindex="-1"></a>  <span class="fu">geom_col</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="fu">reorder</span>(country, <span class="sc">-</span>cgexp), <span class="at">y=</span>cgexp))<span class="sc">+</span></span>
+<span id="cb188-5"><a href="exploratory-visualization.html#cb188-5" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb188-6"><a href="exploratory-visualization.html#cb188-6" tabindex="-1"></a>    <span class="at">title=</span><span class="st">&quot;Central Govt Expenditure as Pct of GDP for Select African Countries (1990-1998 Average)&quot;</span>,</span>
+<span id="cb188-7"><a href="exploratory-visualization.html#cb188-7" tabindex="-1"></a>    <span class="at">x=</span><span class="st">&quot;Country Name&quot;</span>, </span>
+<span id="cb188-8"><a href="exploratory-visualization.html#cb188-8" tabindex="-1"></a>    <span class="at">y=</span><span class="st">&quot;CGEXP&quot;</span>)<span class="sc">+</span></span>
+<span id="cb188-9"><a href="exploratory-visualization.html#cb188-9" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title=</span><span class="fu">element_text</span>(<span class="at">hjust=</span><span class="fl">0.5</span>),</span>
+<span id="cb188-10"><a href="exploratory-visualization.html#cb188-10" tabindex="-1"></a>        <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>))</span></code></pre></div>
+<p>Let’s see how the <code>cgexp_africa_descending</code> plot now looks:</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="exploratory-visualization.html#cb189-1" tabindex="-1"></a><span class="co"># prints contents of &quot;cgexp_africa_descending&quot;</span></span>
+<span id="cb189-2"><a href="exploratory-visualization.html#cb189-2" tabindex="-1"></a>cgexp_africa_descending</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
+<p>Sometimes, you may wish to invert the axes of your charts, which you can do using the <code>coord_flip()</code> function. The code below takes the <code>cgexp_africa_ascending</code> chart we created above, inverts the axes using <code>coord_flip()</code>, and assigns the result to a new object named <code>cgexp_africa_ascending_inverted</code>:</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="exploratory-visualization.html#cb190-1" tabindex="-1"></a><span class="co"># creates a sideways bar chart using the &quot;coord_flip&quot; function and assigns it to a new object named &quot;cgexp_africa_ascending_inverted&quot;  </span></span>
+<span id="cb190-2"><a href="exploratory-visualization.html#cb190-2" tabindex="-1"></a>cgexp_africa_ascending_inverted<span class="ot">&lt;-</span>cgexp_africa_ascending<span class="sc">+</span></span>
+<span id="cb190-3"><a href="exploratory-visualization.html#cb190-3" tabindex="-1"></a>                                    <span class="fu">coord_flip</span>()</span></code></pre></div>
+<p>Let’s see what <code>cgexp_africa_ascending_inverted</code> looks like:</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="exploratory-visualization.html#cb191-1" tabindex="-1"></a><span class="co"># prints &quot;cgexp_africa_ascending_inverted&quot;</span></span>
+<span id="cb191-2"><a href="exploratory-visualization.html#cb191-2" tabindex="-1"></a>cgexp_africa_ascending_inverted</span></code></pre></div>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
+</div>
+<div id="scatterplots" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Scatterplots<a href="exploratory-visualization.html#scatterplots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="numeric-data-summarizing-processing-and-wrangling-tasks.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/aranganath24/IBS_CRDDS_Rworkshop/edit/main/04-applied-work.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": "https://github.com/aranganath24/IBS_CRDDS_Rworkshop/blob/main/04-applied-work.Rmd",
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

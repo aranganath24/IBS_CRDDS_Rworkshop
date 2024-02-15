@@ -1,6 +1,743 @@
 # (PART) Applied Data Research in R {-}
 
-# Data Transfer Part 1: Reading in Data
+# Data Transfer Part 1: Importing Data into R Studio
 
 Typically, the first step when working with research data in R Studio is to load your relevant data into memory. There are many ways to do this, and the precise way in which you will do so will depend on where your data is stored, and how it is structured. Below, we'll cover the process of reading your data into R Studio under a couple of different scenarios. 
+
+We will be working extensively with a country-level crossnational dataset collected by the political economists Torsten Persson and Guido Tabellini for their book on the *Economic Effects of Constitutions*. If you'd like to learn more about this dataset, please refer to its  [codebook](https://www.dropbox.com/s/gn4d9mnqp8pds68/persson_tabellini_codebook.pdf?dl=0) In addition, we will also work with four country-level datasets extracted from the World Bank's [World Development Indicators](https://databank.worldbank.org/source/world-development-indicators) series. These datasets contain information on central government debt as a percentage of GDP; net foreign direct investment inflows as a percentage of GDP; trade as a percentage of GDP; and the urban population as a percentage of the total population. The data for all four of these WDI datasets corresponds to the year 2019. 
+
+## Reading in a dataset from a directory on your computer
+
+Often (especially when a dataset is of tractable size), you will have the dataset you would like to analyze stored on a directory on your computer. In order to read in a dataset from a computer directory, you can use the ```read_csv()``` function (provided it is stored as a CSV; if the file type is different, than the import function would be different as well), and the pass dataset's file path as an argument to the function. Typically, you will want to assign the dataset you read in to a new R object:
+
+```{r}
+# Reads in Persson/Tabellini Data from local directory, and assigns it to new object named "pt"
+pt<-read_csv("data/pt/persson_tabellini_workshop.csv")
+```
+
+If you'd like to view the contents of the dataset, pass it to the R Studio data viewer:
+
+```{r}
+# views "pt" data frame in R Studio data viewer
+View(pt)
+```
+
+```{r, echo=FALSE}
+pt %>% datatable(extensions=c("Scroller", "FixedColumns"), options = list(
+  deferRender = TRUE,
+  scrollY = 350,
+  scrollX = 350,
+  dom = "t",
+  scroller = TRUE,
+  fixedColumns = list(leftColumns = 3)
+))
+```
+
+## Reading in multiple datasets from your disk
+
+Sometimes, your data is spread out over multiple files. For example, you may have multiple CSV files with data stored on disk, which you want to read into R from disk at one-go, instead of loading in multiple files individually. 
+
+To do so, we can use the list data structure to hold all of the desired files, and use the ```map()``` function we learned about above to iteratively read these files into our R environment. 
+
+The first step is to use the ```list.files()``` function to create a character vector of the file names we want to read in; if all of the files you want to read in are already in your working directory, you don't need to supply any arguments to the ```list.files()``` function. If the files are stored in another location, you can specify the relevant file path as an argument to ```list.files()```. In the case below, the individual files we want to read in are four World Development Indicators datasets (which were extracted using the menu on the WDI website); these files are in the "wb" directory within the "data" subdirectory of the working directory:
+
+```{r}
+# print relevant file names, which are stored in the data/wos subdirectory
+wb_files<-list.files("data/wb")
+```
+
+Let's now print the contents of "wb_files" and observe the file names":
+
+
+```{r}
+# prints contents of "wos_files"
+wb_files
+```
+
+Now that we have our file names, we can iteratively pass them through the ```read_csv()``` function, and deposit the files as data frames in a list, which we'll assign to a new object named ```wb_file_list```:
+
+```{r}
+# Iteratively reads in all individual WB files from the "data/db" directory and assigns it to an object named "wb_file_list"
+setwd("data/wb")
+wb_file_list<-map(wos_files, read_csv)
+```
+
+The code above takes the first file name in ```wb_file_list()``` and then passes it to the ```read_csv()``` function and deposits the file as the first data frame in a new list; it then takes the second file name in ```wb_file_list()``` and then passes it to the ```read_csv()``` function and deposits that file as the second data frame in the list; and so on. The list containing all of the files is assigned to a new object named ```wb_file_list```; we'll print the contents below:
+
+```{r}
+# prints contents of "wos_file_list"
+wb_file_list
+```
+
+We will work with the separate data frames in ```wb_file_list``` later in the tutorial. 
+
+## Reading in a dataset from cloud storage
+
+At this point, we have all of the data we need for subsequent sections loaded in our R environment. However, before proceeding, it's worth noting some additional methods of reading in data into R.
+
+If you store your data on the Cloud using a standard storage service such as Dropbox, you can simply extract the URL to the data from your service provider, and pass it as an argument to a data transfer function in R such as ```read_csv()```: 
+
+```{r}
+# Reads in PT dataset from Dropbox and assigns it to a new object named "pt_cloud"
+pt_cloud<-read_csv("https://www.dropbox.com/scl/fi/cow7hk7zsdp46tkzrebxf/persson_tabellini_workshop.csv?rlkey=3dx0dul8uv0c4gpy41ucxwlyo&dl=1")
+```
+
+The code above reads in the Persson-Tabellini dataset that is stored on a Dropbox account straight into R using its URL as an argument, and assigns it to a new object named ```pt_cloud```. If you view ```pt_cloud``` in the data viewer, you'll notice that the dataset is exactly the same as the one assigned to the ```pt``` object. 
+
+## Reading in data from an R package
+
+## Reading in data from a website
+
+# Numeric Data Summarizing, Processing and Wrangling Tasks
+
+In this section, we will survey some useful functions (primarily from the *dplyr* package) for wrangling and processing numeric data. We will demonstrate these functions using the Persson-Tabellini dataset on political-economic data (```pt```). 
+
+First, we'll make a copy of the ```pt``` object, by assigning it to a new object named ```pt_copy```. We'll use ```pt_copy``` when exploring the dataset, which ensures that we do not make inadvertent changes to our original ```pt``` data frame, and can always refer back to it when needed. Keeping a "clean" version of the data, and carrying out analysis tasks on a copy of this dataset, is good data management practice. 
+
+
+```{r}
+# Make a copy of the dataset so we don't alter the original dataset; then, view
+# the copied dataset 
+pt_copy<-pt
+```
+
+We can go ahead and print the contents of ```pt_copy```, which, at this point, is identical to ```pt```:
+
+```{r}
+# Print contents of "pt_copy"
+pt_copy
+```
+
+We can also view it in the data viewer:
+
+```{r}
+# Views "pt_copy" in data frame
+View(pt_copy)
+```
+
+```{r, echo=F}
+pt_copy %>% datatable(extensions=c("Scroller", "FixedColumns"), options = list(
+  deferRender = TRUE,
+  scrollY = 350,
+  scrollX = 350,
+  dom = "t",
+  scroller = TRUE,
+  fixedColumns = list(leftColumns = 3)
+))
+```
+
+## Summary Statistics
+
+Once you have a dataset loaded into R, one of the first things you'll want to do is likely to generate a table of summary statistics. A quick way to do that is to use the ```describe()``` function from the *psych* package. Below, we'll generate summary statistics for the ```pt_copy``` dataset by passing it to the ```describe()``` function, and assign the table of summary statistics to a new object named ```pt_copy_summarystats1```. We'll then view it in the data viewer:
+
+```{r}
+# Generate summary statistics for "pt_copy" and assign to new object named "pt_copy_summarystats1"
+pt_copy_summarystats1<-describe(pt_copy)
+```
+
+```{r}
+# View contents of "pt_copy_summarystats1" in data viewer
+View(pt_copy_summarystats1)
+```
+
+```{r, echo=F}
+pt_copy_summarystats1 %>% datatable(extensions=c("Scroller", "FixedColumns"), options = list(
+  deferRender = TRUE,
+  scrollY = 350,
+  scrollX = 350,
+  dom = "t",
+  scroller = TRUE,
+  fixedColumns = list(leftColumns = 3)
+))
+```
+
+While having a simple table of summary statistics is often a useful starting point, it is often useful to generate group-level summary statistics, where summary statistics are presented for different subgroups in the dataset. One way to generate group summary statistics is to use the ```describeBy()``` function (also from the *psych* package), where the first argument is the data frame you would like to generate group-level summary statistics for, and the second argument is the column that contains the relevant groups. Below, we generate summary statistics for ```pt_copy``` parsed out by the different continents in the "continent" column. The expression ```pt_copy$continent``` indicates that the groups with respect to which we want to calcualte the summary statistics is in the "continent" column of the ```pt_copy``` data frame. More generally, we can explicitly refer to columns in an R data frame using this dollar-sign notation, where the expression before the dollar sign refers to the data frame object, and the expression after refers to the name of the column. 
+
+The ```describeBy()``` function will produce a list that contains summary statistics for different groups as list elements. Below, we'll assign the list of group summary statistics to a new object named ```summary_stats_by_continent```:
+
+```{r}
+# Creates summary statistics for each continent grouping, and puts results in list named "summary_stats_by_continent"
+summary_stats_by_continent<-describeBy(pt_copy, pt_copy$continent)
+```
+
+Now, let's say we want to extract the summary statistics for Africa, one of the continent categories in the "continent" column. We can do so using the double-bracket notation we discussed above:
+
+```{r}
+# Accessing continent-level summary statistics for africa from the "summary_stats_by_continent" list
+summary_stats_by_continent[["africa"]]
+```
+
+Recall that we can assign list elements that we extract from a list to their own object, which allows us to conveniently retrieve it whenever it is needed. Below, we'll assign the summary statistics for Africa to a new object named ```africa_summary```:
+
+```{r}
+# Group-level summary statistics can be assigned to their own object for easy retrieval
+africa_summary<-summary_stats_by_continent[["africa"]]
+```
+
+Another convenient way to retrieve group-level summary statistics is through the ```group_by()``` function in the *dplyr* package. First, we'll run the code below, and assign it to a new object named ```trade_age_by_continent```:
+
+```{r}
+# Generate a table that displays summary statistics for trade at the continent level and assign to object named "trade_age_by_continent"
+trade_age_by_continent<-pt_copy %>% 
+                          group_by(continent) %>% 
+                            summarise(meanTrade=mean(trade),sdTrade=sd(trade),
+                                      meanAge=mean(age), sdAge=sd(age),
+                                      n=n())
+```
+
+Now, let's print the contents of ```trade_age_by_continent```:
+
+```{r}
+# prints contents of "trade_age_by_continent"
+trade_age_by_continent
+```
+
+Let's now unpack the code that created this table. We started with the ```pt_copy``` data frame, and then used ```group_by(continent)``` to declare that subsequent calculations should be performed at the continent-level; then, within the ```summarise()``` function, we defined the column names we wanted to use in the group-level summary table, and how those variables are to be calculated. For example, ```meanTrade=mean(trade)``` indicates that we want the first column to be named "meanTrade", which is to be calculated by taking the mean of the "trade" variable for each continent grouping. After that, ```sdTrade=sd(trade)``` indicates that we want the second column to be named "sdTrade", which is to be calculated by taking the standard deviation of the "trade" variable for each continent grouping. And so on. Note that ```n=n()``` indicates that we want the final column, named "n", to provide information about the number of observations in each continent-level grouping. 
+
+You might have noticed a mysterious symbol in the above code that comes immediately after ```pt_copy```, and immediately after ```group_by(continent)```. This symbol is known as a “pipe” (```%>%```). The pipe operator effectively takes the contents to its left, and then uses these contents as an input to the code on its right. Above, the pipe takes the contents of ```pt_copy``` on its left, and then feeds this data into the ```group_by()``` function on the right; then, after grouping the data by continent, it feeds this grouped data on its left into the ```summarise()``` function on its right.  We will use the pipe operator throughout the lesson to chain together functions in this manner. 
+
+Finally, in addition to calculating summary statistics and group-level summary statistics, another useful way to explore your data is to generate simple crosstabs that show the breakdown of one variable with respect to the other. The code below uses the ```tabyl()``` function from the *janitor* package to compute a crosstab between the "federal" variable (i.e. this variable takes on the value of 1 if a country has a federal structure of government, and 0 if it's a unitary government) and the "continent" variable; it assigns the crosstab to a new object named ```crosstab_federal_continent```:
+
+```{r}
+# Creates cross-tab showing the breakdown of federal/non federal across continents
+crosstab_federal_continent<-pt_copy %>% tabyl(federal, continent)
+```
+
+Let's print the contents of ```crosstab_federal_continent```:
+
+```{r}
+# prints contents of "crosstab_federal_continent"
+crosstab_federal_continent
+```
+
+This tells us, for instance, that among Latin American countries, 19 had a unitary government, and 4 had federal structure of government. 
+
+## Basic Data Cleaning and Preparation Tasks
+
+After getting a sense of your data by computing some summary statistics and running some crosstabs, you'll often have a sense of how you would like to clean or transform your data for analysis. This subsection briefly describes some functions that are useful for these basic data-preparation tasks. 
+
+### Rearranging Columns
+
+We can manipulate the order of the columns in a dataset using the ```relocate``` function. For example, the code below uses the ```relocate()``` function to shift the "country" column to the front of the dataset, and then assigns this change back to ```pt_copy``` to update the object:
+
+```{r}
+# bring the "country" column to the front of the dataset
+pt_copy<-pt_copy %>% relocate(country)
+```
+
+You can confirm that the change has been implemented by viewing ```pt_copy``` in the data viewer:
+
+```{r}
+# Views "pt_copy" in data viewer
+View(pt_copy)
+```
+
+```{r, echo=F}
+pt_copy %>% datatable(extensions=c("Scroller", "FixedColumns"), options = list(
+  deferRender = TRUE,
+  scrollY = 350,
+  scrollX = 350,
+  dom = "t",
+  scroller = TRUE,
+  fixedColumns = list(leftColumns = 3)
+))
+```
+
+You can specify more than one argument to the ```relocate``` function. For example, in the code below, passing the "country", "list", "trade", and "oecd" variables/columns to the ```relocate()``` function will make "country" the first column, "list" the second column, "trade" the third column, and so on. 
+
+```{r}
+# bring the "country", "list", "trade", "oecd" columns to the front of the dataset
+pt_copy<-pt_copy %>% relocate(country, list, trade, oecd)
+```
+
+```{r}
+# Views updated "pt_copy" data frame in data viewer
+View(pt_copy)
+```
+
+```{r, echo=F}
+pt_copy %>% datatable(extensions=c("Scroller", "FixedColumns"), options = list(
+  deferRender = TRUE,
+  scrollY = 350,
+  scrollX = 350,
+  dom = "t",
+  scroller = TRUE,
+  fixedColumns = list(leftColumns = 3)
+))
+```
+
+### Renaming Variables
+
+In order to rename variables, we can use the ```rename()``` function, as below. The code below renames the existing "list" variable to "party_list", which is more descriptive, and assigns the change back to the ```pt_copy``` object. 
+
+```{r}
+## Renaming a variable (renames "list" to "party_list")
+pt_copy<-pt_copy %>% rename(party_list=list)
+```
+
+Check the ```pt_copy``` data frame in the viewer to ensure that the change has been made. 
+
+### Sorting a dataset in ascending or descending order with respect to a variable
+
+It is often useful to sort a data frame in ascending or descending order with respect to a given variable. The code below sorts the ```pt_copy``` data frame in ascending order with respect to the "trade" variable using the ```arrange()``` function:
+
+```{r}
+# sorting in ascending (low to high) order with respect to the "trade" variable
+pt_copy<-pt_copy %>% arrange(trade)
+```
+
+If, instead, you want to sort the dataset in descending order with respect to the "trade" variable, pass the name of the variable to the ```desc()``` function within the ```arrange()``` function, as below:
+
+```{r}
+# sorting in descending (high to low) order with respect to the "trade" variable
+pt_copy<-pt_copy %>% arrange(desc(trade))
+```
+
+### Creating new variables based on existing variables
+
+Depending on your research question and empirical strategy, it is often useful or necessary to create new variables in your dataset, based on existing variables. To do so, we can use *dplyr's* ```mutate()``` function. The code below, for example, uses the ```mutate()``` function to create a new variable, named "non_catholic_80", that is computed by subtracting the existing "catho80" variable from 100; for convenience, the "country", "catho80", and newly created "non_catholic_80" variables are all moved to the front of the dataset using the ```relocate()``` function:
+
+```{r}
+# Create new variable named "non_catholic_80" that is calculated by substracting the Catholic share of the population in 1980 ("catho80") from 100  and relocates "country", "catho80", and the newly created "non_catholic_80" to the front of the dataset
+pt_copy<-pt_copy %>% mutate(non_catholic_80=100-catho80) %>% 
+                     relocate(country, catho80, non_catholic_80)
+```
+
+You can view the updated ```pt_copy``` data frame to confirm that the new variable has been created:
+
+```{r}
+# views updated "pt_copy" data frame in R Studio data viewer
+View(pt_copy)
+```
+
+```{r, echo=F}
+# prints updated contents of "pt_copy"
+pt_copy %>% datatable(extensions=c("Scroller", "FixedColumns"), options = list(
+  deferRender = TRUE,
+  scrollY = 350,
+  scrollX = 350,
+  dom = "t",
+  scroller = TRUE,
+  fixedColumns = list(leftColumns = 3)
+))
+```
+
+### Selecting or Deleting Variables
+
+Sometimes, you will have a dataset with many variables, and to make things more tractable, you'll want to select only the variables that are relevant to your analysis. You can explicitly select desired variables using the ```select()``` function from *dplyr*. The code below selects the "country", "cgexp", "cgrev", "trade", and "federal" columns from ```pt_copy```, and then assigns this selection to a new object named ```pt_copy_selection```:
+
+```{r}
+# Selects "country", "cgexp", "cgrev", and "trade" variables from the "pt_copy" dataset and assigns the selection to a new object named "pt_copy_selection"
+pt_copy_selection<-pt_copy %>% 
+                    select(country, cgexp, cgrev, trade, federal)
+```
+
+When you view the ```pt_copy_selection``` object in the data viewer, you'll see that we now have a new data frame that consists only of these variables:
+
+```{r}
+# views "pt_copy_selection" in data viewer
+View(pt_copy_selection)
+```
+
+```{r, echo=F}
+# prints updated contents of "pt_copy"
+pt_copy_selection %>% datatable(extensions=c("Scroller", "FixedColumns"), options = list(
+  deferRender = TRUE,
+  scrollY = 350,
+  scrollX = 350,
+  dom = "t",
+  scroller = TRUE,
+  fixedColumns = list(leftColumns = 3)
+))
+```
+
+Instead of selecting columns to keep, it may sometimes by easier to directly delete columns. For example, the code below deletes the "federal" variable from ```pt_copy_selection``` by passing it to the ```select()``` column with a "-" in front of it. 
+
+```{r}
+# deletes "federal" variable from "pt_copy_selection"
+pt_copy_selection %>% select(-federal)
+```
+
+If you want to delete multiple columns, simply specify the columns in a vector, preceded by a minus sign, that is passed to the ```select()``` function. The code below, for instance, takes the existing ```pt_copy_selection``` data frame, deletes the "federal" and "trade" columns, and assigns the result to a new object named ```pt_copy_selection_modified```:
+
+```{r}
+# deletes "federal" and "trade" from "pt_copy_selection" and assigns it to new object named "pt_copy_selection_modified"
+pt_copy_selection_modified<-pt_copy_selection %>% select(-c(federal, trade))
+```
+
+Check the ```pt_copy_selection_modified``` data frame in the data viewer to confirm these changes:
+
+```{r}
+# views "pt_copy_selection_modified" in data viewer
+pt_copy_selection_modified
+```
+
+```{r, echo=F}
+# prints updated contents of "pt_copy"
+pt_copy_selection_modified %>% datatable(extensions=c("Scroller", "FixedColumns"), options = list(
+  deferRender = TRUE,
+  scrollY = 350,
+  scrollX = 350,
+  dom = "t",
+  scroller = TRUE,
+  fixedColumns = list(leftColumns = 3)
+))
+```
+
+### Recoding Variables
+
+"Recoding" a variable refers to the process of taking an existing variable, and generating new variable(s) that represent the information from that original variable in a new way. Below, we'll consider some common recoding operations. 
+
+*Creating Dummy Variables from Continuous Numeric Variables*
+
+You may sometimes have a continuous numeric variable, but want to create a new dummy variable (a variable that takes on the value of 1 if a given condition is met, and 0 otherwise) based on that numeric variable. For example, let's say we want to create a new variable, named "trade_open" that takes on the value of 1 if the trade variable is greater than or equal to 77, and 0 otherwise. We can generate this new dummy variable using the ```mutate()``` function; within the ```mutate()``` function below, we specify that we want to create a new variable named "trade_open"; the ```ifelse()``` function specifies the desired condition (trade>=77), followed by the value the new "trade_open" variable is to take if the condition is met (1), and the value the new "trade_open" variable is to take if the condition is not met (0). In other words, we can translate ```ifelse(trade>=77, 1, 0)``` to "if trade>=77, set the 'trade_open' variable to 1, otherwise set it to 0." We'll assign the data frame with the new "trade_open" variable back to "pt_copy":
+
+
+```{r}
+# Creates a new dummy variable based on the existing "trade" variable named "trade_open" (which takes on a value of "1" if "trade" is greater than or equal to 77, and 0 otherwise) and then moves the newly created variable to the front of the dataset along with "country" and "trade"; all changes are assigned to "pt_copy", thereby overwriting the existing version of "pt_copy"
+
+pt_copy<-pt_copy %>% mutate(trade_open=ifelse(trade>=77, 1, 0)) %>% 
+                     relocate(country, trade_open, trade)
+```
+
+View the data frame to ensure that the new variable "trade_open", recoded based on "trade", has been created:
+
+```{r, echo=F}
+pt_copy %>% datatable(extensions=c("Scroller", "FixedColumns"), options = list(
+  deferRender = TRUE,
+  scrollY = 350,
+  scrollX = 350,
+  dom = "t",
+  scroller = TRUE,
+  fixedColumns = list(leftColumns = 3)
+))
+```
+
+*Creating categorical variables from continuous numeric variables*
+
+Sometimes, you will want to create a variable that contains categories or classifications that derive from numeric thresholds of an existing variable. For instance, let's say we want to take the existing "trade" variable, and define a new variable named "trade_level", which is set to "Low Trade" when the "trade" variable is greater than 15 and less than 50; "Intermediate_Trade" when the "trade" variable is greater than or equal to 50 and less than 100; and "High_Trade" when the "trade" variable is greater than or equal to 100. The code below creates this new "trade_level" variable using the ```mutate()``` function, and the ```case_when()``` function that maps the conditions onto the desired variable values for "trade_level" using the following syntax:
+
+
+```{r}
+# Creates a new variable in the "pt_copy" dataset named "trade_level" (that is coded as "Low Trade" when the "trade" variable is greater than 15 and less than 50, coded as "Intermediate Trade" when "trade" is greater than or equal to 50 and less than 100, and coded as "High TradE" when "trade" is greater than or equal to 100), and then reorders the dataset such that "country", "trade_level", and "trade" are the first three variables in the dataset
+pt_copy<-pt_copy %>% mutate(trade_level=case_when(trade>15 & trade<50~"Low_Trade",
+                                                  trade>=50 & trade<100~"Intermediate_Trade",
+                                                  trade>=100~"High_Trade")) %>% 
+                    relocate(country, trade_level, trade)
+```
+
+Check to see that the new "trade_level" variable has indeed been created in ```pt_copy``` according to the specifications above:
+
+
+```{r}
+# views updated "pt_copy" data frame in data viewer
+View(pt_copy)
+```
+
+
+```{r, echo=F}
+pt_copy %>% datatable(extensions=c("Scroller", "FixedColumns"), options = list(
+  deferRender = TRUE,
+  scrollY = 350,
+  scrollX = 350,
+  dom = "t",
+  scroller = TRUE,
+  fixedColumns = list(leftColumns = 3)
+))
+```
+
+*Creating dummmy variables from categorical variables*
+
+Sometimes, you may have a categorical variable in a dataset, and want to create dummy variables based on those categories. For example, consider the "trade_level" variable we created above. Let's say we want to use the "trade_level" column to create dummy variables for each of the categories in that column. We can do so with the *fastDummies* package, which can quickly generate dummy variables for the categories in a categorical variable using the ```dummy_cols()``` function. Below, we simply take the existing ```pt_copy``` dataset, and pass the name of the categorical variable out of which we want to create the dummies ("trade_level") to the ```dummy_cols()``` function:
+
+
+```{r, message=FALSE}
+# Creates dummy variables from "trade_level" column, and relocates the new dummies to the front of the dataset
+pt_copy<-pt_copy %>% dummy_cols("trade_level") %>% 
+                      relocate(country, trade_level, trade_level_High_Trade, trade_level_Intermediate_Trade, trade_level_Low_Trade)
+```
+
+Let's now view the updated ```pt_copy``` data frame, with the newly created dummy variables:
+
+```{r}
+# views updated "pt_copy" in data viewer
+View(pt_copy)
+```
+
+```{r, echo=F}
+pt_copy %>% datatable(extensions=c("Scroller", "FixedColumns"), options = list(
+  deferRender = TRUE,
+  scrollY = 350,
+  scrollX = 350,
+  dom = "t",
+  scroller = TRUE,
+  fixedColumns = list(leftColumns = 3)
+))
+```
+
+You'll notice that there are now dummy variables corresponding to each of the categories in the categorical "trade_level" variable; for example, the "trade_level_High_Trade" dummy variable takes on the value of 1 for all observations where the "trade_level" variable is "High_Trade" and 0 otherwise; the "trade_level_Intermediate_Trade" dummy variable takes on the value of 1 for all observations where the "trade_level" variable is "Intermediate_Trade" and 0 otherwise; and so on. 
+
+### Subsetting Variables
+
+You will often want to subset, or "filter" your datasets to extract observations that meet specified criteria. The *dplyr* packages allows you to carry out these subsetting operations with a function called ```filter()```, which takes various logical conditions as arguments. Let's say, for example, that we want to extract all of the OECD country observations from the ```pt_copy``` dataset. The "oecd" variable in ```pt_copy``` is equal to 1, for all OECD countries, and 0 for non-OECD countries. By passing the condition ```oecd==1``` to the ```filter()``` function, we can extract all OECD observations. We'll assign this data subset to a new object named ```oecd_countries```, and view it in the data viewer:
+
+
+```{r}
+# Extracts OECD observations in "pt_copy" and assigns to object named "oecd_countries"
+oecd_countries<-pt_copy %>% filter(oecd==1) %>% 
+                            relocate(country, oecd)
+```
+
+
+```{r}
+# views "oecd_countries" in data viewer
+View(oecd_countries)
+```
+
+```{r, echo=F}
+oecd_countries %>% datatable(extensions=c("Scroller", "FixedColumns"), options = list(
+  deferRender = TRUE,
+  scrollY = 350,
+  scrollX = 350,
+  dom = "t",
+  scroller = TRUE,
+  fixedColumns = list(leftColumns = 3)
+))
+```
+
+Let's take another example. Let's use the ```filter()``` function to extract all observations for which the "cgrev" (central government revenue as a share of GDP) exceeds 40. We'll assign the observations that satisfy this condition to a new object named ```high_revenues```:
+
+```{r}
+# Extracts observations for which cgrev (central government revenue as % of gdp)>40, and assigns to object named "high_revenues"
+high_revenues<-pt_copy %>% filter(cgrev>40) %>% 
+                              relocate(country, cgrev)
+                        
+```
+
+```{r}
+# Views "high_revenues" in data viewer
+high_revenues
+```
+
+
+```{r, echo=F}
+high_revenues %>% datatable(extensions=c("Scroller", "FixedColumns"), options = list(
+  deferRender = TRUE,
+  scrollY = 350,
+  scrollX = 350,
+  dom = "t",
+  scroller = TRUE,
+  fixedColumns = list(leftColumns = 3)
+))
+```
+
+Let's try another example. Let's subset observations from ```pt_copy``` for which the Catholic share of the population in 1980 ("catho80") is less than or equal to 50, and assign the filtered data to a new object named ```minority_catholic```:
+
+```{r}
+# Extracts observations for which the "catho80" variable is less than or equal to 50
+minority_catholic<-pt_copy %>% filter(catho80<=50) %>% 
+                               relocate(country, catho80)
+```
+
+```{r}
+# Views "minority_catholic" in the data viewer
+View(minority_catholic)
+```
+
+```{r, echo=F}
+minority_catholic %>% datatable(extensions=c("Scroller", "FixedColumns"), options = list(
+  deferRender = TRUE,
+  scrollY = 350,
+  scrollX = 350,
+  dom = "t",
+  scroller = TRUE,
+  fixedColumns = list(leftColumns = 3)
+))
+```
+
+It is also possible to chain together multiple conditions as arguments to the ```filter()``` function. For example, if we want to subset observations from OECD countries that also have a federal political structure, we can use the "&" operator to specify these two conditions; we'll assign the filtered dataset to a new object named ```oecd_federal_countries```:
+
+
+```{r}
+# Extracts federal OECD countries (where oecd=1 AND federal=1) and assigns to a new object named "oecd_federal_countries"
+oecd_federal_countries<-pt_copy %>% filter(oecd==1 & federal==1) %>% 
+                                      relocate(country, oecd, federal)
+```
+
+```{r}
+# Views "oecd_federal_countries" in data viewer
+oecd_federal_countries
+```
+
+```{r, echo=F}
+oecd_federal_countries %>% datatable(extensions=c("Scroller", "FixedColumns"), options = list(
+  deferRender = TRUE,
+  scrollY = 350,
+  scrollX = 350,
+  dom = "t",
+  scroller = TRUE,
+  fixedColumns = list(leftColumns = 3)
+))
+```
+
+We can use a vertical line (|) to specify "or" conditions. For example, the code below subsets observations from countries in Africa OR countries in Asia/Europe, and assigns the subsetted data to a new object named ```asia_europe_africa```:
+
+```{r}
+# Extracts observations that are in Africa ("africa") OR in Asia/Europe ("asiae) and assigns to an object named "asia_europe_africa"
+asia_europe_africa<-pt_copy %>% filter(continent=="africa"|continent=="asiae") %>% 
+                                  relocate(continent)
+```
+
+```{r}
+# views "asia_europe_africa" in data viewer
+View(asia_europe_africa)
+```
+
+
+```{r}
+# Prints contents of "asia_europe_africa"
+asia_europe_africa %>% datatable(extensions=c("Scroller", "FixedColumns"), options = list(
+  deferRender = TRUE,
+  scrollY = 350,
+  scrollX = 350,
+  dom = "t",
+  scroller = TRUE,
+  fixedColumns = list(leftColumns = 3)
+))
+```
+
+It is also useful to know how to subset datasets to extract observations that do NOT meet a given condition. In particular, the condition "not equal to" is denoted by a "!=". For example, if we wanted to extract observations from ```pt_copy``` where the "continent" variable is NOT equal to "africa", and assign the result to a new object named ```pt_copy_sans_africa```, we can write the following:
+
+```{r}
+# Extracts all non-Africa observations and assigns to object named "pt_copy_sans_africa"
+pt_copy_sans_africa<-pt_copy %>% filter(continent!="africa") %>% relocate(continent)
+```
+
+```{r}
+# views pt_copy_sans_africa in the data viewer
+View(pt_copy_sans_africa)
+```
+
+```{r}
+# Prints contents of "pt_copy_sans_africa"
+pt_copy_sans_africa %>% datatable(extensions=c("Scroller", "FixedColumns"), options = list(
+  deferRender = TRUE,
+  scrollY = 350,
+  scrollX = 350,
+  dom = "t",
+  scroller = TRUE,
+  fixedColumns = list(leftColumns = 3)
+))
+```
+
+# Exploratory Visualization
+
+R has a number of powerful visualization capabilities, but one of the most frequently used tools for data visualization in R is the *ggplot2* package, which is a part of the *tidyverse* suite. Data visualization using *ggplot2* is a vast topic; our goal here is to provide you with some basic intuition for how ggplot visualizations are constructed by developing some basic exploratory visualizations. While our treatment here focuses on bar charts and scatterplots, *ggplot* offers functions for a much wider variety of visualizations. However, bar charts and scatterplots offer a convenient way to familiarize yourself with basic *ggplot* syntax. 
+
+## Bar Charts
+
+Let's make some simple bar charts for the African countries in ```pt_copy```. Let's say we want to make a bar chart that displays variation in the "cgexp" variable (central government expenditure as a share of GDP) for African countries. We'll begin by extracting the Africa observations from ```pt_copy``` using the ```filter()``` function, and removing any "NA" observations for this variable from the dataset using the ```drop_na()``` function:
+
+```{r}
+# filters Africa observations
+pt_africa<-pt_copy %>% 
+            filter(continent=="africa") %>% 
+            drop_na(cgexp)
+```
+
+Now, let's make a basic bar chart of the "cgexp" data from ```pt_africa```, and assign it to an object named ```cgexp_africa```:
+
+```{r}
+# Creates a bar chart of the "cgexp" variable (central government expenditure as a share of GDP) for the Africa observations and assigns the plot to an object named "cgexp_africa"
+cgexp_africa<-
+  ggplot(pt_africa)+
+  geom_col(aes(x=country, y=cgexp))+
+  labs(
+    title="Central Govt Expenditure as Pct of GDP for Select African Countries (1990-1998 Average)",
+    x="Country Name", 
+    y="CGEXP")+
+  theme(plot.title=element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 90))
+```
+
+Let's unpack the code above:
+
+* The expression ```ggplot(pt_africa)``` specifies that we want to initialize *ggplot*, and declares the dataset containing the data we want to map ("pt_africa")
+* ```geom_col()``` indicates that we want to make a bar chart. If you wanted to make a different type of chart, this function would be different. Within the ```geom_col()``` function, we indicate our desired aesthetic mapping ```aes()```; an aesthetic mapping indicates how we would like variables in the datasets to be represented on the chosen visualization. Here, the expression ```x=country, y=cgexp``` simply indicates that we want countries to be represented on the x-axis of the chart, and the "cgexp" variable to be represented on the y-axis.
+* The arguments to the ```labs()``` function (short for "labels") specify a desired title for the visualization, and x-axis and y-axis labels.
+* The arguments to the ```theme()``` function specify a desired position for the plot title, and a desired format for the x-axis labels.
+
+Note that *ggplot2* functions are chained together with a "+" sign. 
+
+Let's see what ```cgexp_africa``` looks like:
+
+```{r}
+# prints contents of cgexp_africa
+cgexp_africa
+```
+
+This is a nice start, but it may look a bit cleaner if we arrayed the chart in ascending order with respect to the cgexp variable. To do so, we can slightly change our aesthetic mapping to look like this: ```aes(x=reorder(country, cgexp), y=cgexp))```. This indicates that we'd still like the "cgexp" variable on the y-axis, and countries on the x-axis; however, we'd also like to order countries in ascending order with respect to the "cgexp" variable. We'll assign this modified chart to a new object named ```cgexp_africa_ascending```:
+
+```{r}
+# Creates a bar chart of the "cgexp" variable (central government expenditure as a share of GDP) for the Africa observations; countries are on the x axis and arrayed in ascending order with respect to the cgexp variable, which is on the y-axis; plot is assigned to an object named "cgexp_africa_ascending"
+cgexp_africa_ascending<-
+  ggplot(pt_africa)+
+  geom_col(aes(x=reorder(country, cgexp), y=cgexp))+
+  labs(
+    title="Central Govt Expenditure as Pct of GDP for Select African Countries (1990-1998 Average)",
+    x="Country Name", 
+    y="CGEXP")+
+  theme(plot.title=element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 90))
+```
+
+All other apsects of the code are the same as before. Let's see what the modified chart looks like:
+
+```{r}
+# prints "cgexp_africa_ascending"
+cgexp_africa_ascending
+```
+
+If, instead of arrange the countries in asscending order with respect to the "cgexp" variable, we want to arrange them in descending order, we can simply put a "-" before "cgexp" within the aesthetic mapping; we'll assign the modified chart to a new object named ```cgexp_africa_descending```:
+
+```{r}
+# Creates a bar chart of the "cgexp" variable (central government expenditure as a share of GDP) for the Africa observations; countries are on the x axis and arrayed in descending order with respect to the cgexp variable, which is on the y-axis; plot is assigned to an object named "cgexp_africa_descending"
+cgexp_africa_descending<-
+  ggplot(pt_africa)+
+  geom_col(aes(x=reorder(country, -cgexp), y=cgexp))+
+  labs(
+    title="Central Govt Expenditure as Pct of GDP for Select African Countries (1990-1998 Average)",
+    x="Country Name", 
+    y="CGEXP")+
+  theme(plot.title=element_text(hjust=0.5),
+        axis.text.x = element_text(angle = 90))
+```
+
+Let's see how the ```cgexp_africa_descending``` plot now looks:
+
+```{r}
+# prints contents of "cgexp_africa_descending"
+cgexp_africa_descending
+```
+
+Sometimes, you may wish to invert the axes of your charts, which you can do using the ```coord_flip()``` function. The code below takes the ```cgexp_africa_ascending``` chart we created above,  inverts the axes using ```coord_flip()```, and assigns the result to a new object named ```cgexp_africa_ascending_inverted```:
+
+```{r}
+# creates a sideways bar chart using the "coord_flip" function and assigns it to a new object named "cgexp_africa_ascending_inverted"  
+cgexp_africa_ascending_inverted<-cgexp_africa_ascending+
+                                    coord_flip()
+```
+
+Let's see what ```cgexp_africa_ascending_inverted``` looks like:
+
+```{r}
+# prints "cgexp_africa_ascending_inverted"
+cgexp_africa_ascending_inverted
+```
+
+## Scatterplots
+
+
+
+
 
