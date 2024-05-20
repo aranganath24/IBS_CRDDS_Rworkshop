@@ -23,7 +23,7 @@
 <meta name="author" content="Aditya Ranganath" />
 
 
-<meta name="date" content="2024-02-15" />
+<meta name="date" content="2024-05-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -221,8 +221,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html"><i class="fa fa-check"></i><b>12</b> Working with multiple datasets</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#merging-data"><i class="fa fa-check"></i><b>12.1</b> Merging data</a></li>
-<li class="chapter" data-level="12.2" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#automating-data-processing-tasks"><i class="fa fa-check"></i><b>12.2</b> Automating data processing tasks</a></li>
+<li class="chapter" data-level="12.1" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#reading-in-multiple-files"><i class="fa fa-check"></i><b>12.1</b> Reading in multiple files</a></li>
+<li class="chapter" data-level="12.2" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#merging-data"><i class="fa fa-check"></i><b>12.2</b> Merging Data</a></li>
+<li class="chapter" data-level="12.3" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#appending-data"><i class="fa fa-check"></i><b>12.3</b> Appending Data</a></li>
+<li class="chapter" data-level="12.4" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#reshaping-data"><i class="fa fa-check"></i><b>12.4</b> Reshaping Data</a></li>
+<li class="chapter" data-level="12.5" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#automating-data-processing-tasks"><i class="fa fa-check"></i><b>12.5</b> Automating data processing tasks</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html"><i class="fa fa-check"></i><b>13</b> Data Transfer Part 2: Exporting data</a>
 <ul>
@@ -230,8 +233,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html#exporting-multiple-data-frames"><i class="fa fa-check"></i><b>13.2</b> Exporting multiple data frames</a></li>
 <li class="chapter" data-level="13.3" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html#exporting-other-objects-i.e.-visualizations"><i class="fa fa-check"></i><b>13.3</b> Exporting other objects (i.e. visualizations)</a></li>
 </ul></li>
-<li class="part"><span><b>III Replication Exercise in R</b></span></li>
-<li class="chapter" data-level="14" data-path="replication-exercise-overview.html"><a href="replication-exercise-overview.html"><i class="fa fa-check"></i><b>14</b> Replication Exercise Overview</a></li>
+<li class="part"><span><b>III Exercises in R</b></span></li>
+<li class="chapter" data-level="14" data-path="practice-exercises.html"><a href="practice-exercises.html"><i class="fa fa-check"></i><b>14</b> Practice Exercises</a></li>
+<li class="chapter" data-level="15" data-path="replication-exercise.html"><a href="replication-exercise.html"><i class="fa fa-check"></i><b>15</b> Replication Exercise</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -253,11 +257,175 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="working-with-multiple-datasets" class="section level1 hasAnchor" number="12">
 <h1><span class="header-section-number">12</span> Working with multiple datasets<a href="working-with-multiple-datasets.html#working-with-multiple-datasets" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="merging-data" class="section level2 hasAnchor" number="12.1">
-<h2><span class="header-section-number">12.1</span> Merging data<a href="working-with-multiple-datasets.html#merging-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="reading-in-multiple-files" class="section level2 hasAnchor" number="12.1">
+<h2><span class="header-section-number">12.1</span> Reading in multiple files<a href="working-with-multiple-datasets.html#reading-in-multiple-files" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb238-1"><a href="working-with-multiple-datasets.html#cb238-1" tabindex="-1"></a><span class="co"># extracts file names in working directory</span></span>
+<span id="cb238-2"><a href="working-with-multiple-datasets.html#cb238-2" tabindex="-1"></a>worldbank_filenames<span class="ot">&lt;-</span><span class="fu">list.files</span>()</span></code></pre></div>
+<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb239-1"><a href="working-with-multiple-datasets.html#cb239-1" tabindex="-1"></a><span class="co"># prints file names in working directory</span></span>
+<span id="cb239-2"><a href="working-with-multiple-datasets.html#cb239-2" tabindex="-1"></a>worldbank_filenames</span></code></pre></div>
+<pre><code>## [1] &quot;wdi_debt2019.csv&quot;  &quot;wdi_fdi2019.csv&quot;   &quot;wdi_trade2019.csv&quot; &quot;wdi_urban2019.csv&quot;</code></pre>
+<div class="sourceCode" id="cb241"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb241-1"><a href="working-with-multiple-datasets.html#cb241-1" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">&quot;data/wb&quot;</span>)</span>
+<span id="cb241-2"><a href="working-with-multiple-datasets.html#cb241-2" tabindex="-1"></a><span class="co"># iteratively reads in World Bank files from working directory and assigns them to a new list object named &quot;world_bank_list&quot;</span></span>
+<span id="cb241-3"><a href="working-with-multiple-datasets.html#cb241-3" tabindex="-1"></a>world_bank_list<span class="ot">&lt;-</span><span class="fu">map</span>(worldbank_filenames, read_csv)</span></code></pre></div>
+<pre><code>## Rows: 271 Columns: 5
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (5): Country Name, Country Code, Series Name, Series Code, 2019 [YR2019]
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## Rows: 271 Columns: 5
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (5): Country Name, Country Code, Series Name, Series Code, 2019 [YR2019]
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## Rows: 271 Columns: 5
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (5): Country Name, Country Code, Series Name, Series Code, 2019 [YR2019]
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+## Rows: 271 Columns: 5
+## ── Column specification ──────────────────────────────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (5): Country Name, Country Code, Series Name, Series Code, 2019 [YR2019]
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb243-1"><a href="working-with-multiple-datasets.html#cb243-1" tabindex="-1"></a><span class="co"># prints datasets in &quot;world_bank_list&quot;</span></span>
+<span id="cb243-2"><a href="working-with-multiple-datasets.html#cb243-2" tabindex="-1"></a>world_bank_list</span></code></pre></div>
+<pre><code>## [[1]]
+## # A tibble: 271 × 5
+##    `Country Name`      `Country Code` `Series Name`                          `Series Code` `2019 [YR2019]`
+##    &lt;chr&gt;               &lt;chr&gt;          &lt;chr&gt;                                  &lt;chr&gt;         &lt;chr&gt;          
+##  1 Afghanistan         AFG            Central government debt, total (% of … GC.DOD.TOTL.… ..             
+##  2 Albania             ALB            Central government debt, total (% of … GC.DOD.TOTL.… 75.69848824949…
+##  3 Algeria             DZA            Central government debt, total (% of … GC.DOD.TOTL.… ..             
+##  4 American Samoa      ASM            Central government debt, total (% of … GC.DOD.TOTL.… ..             
+##  5 Andorra             AND            Central government debt, total (% of … GC.DOD.TOTL.… ..             
+##  6 Angola              AGO            Central government debt, total (% of … GC.DOD.TOTL.… ..             
+##  7 Antigua and Barbuda ATG            Central government debt, total (% of … GC.DOD.TOTL.… ..             
+##  8 Argentina           ARG            Central government debt, total (% of … GC.DOD.TOTL.… ..             
+##  9 Armenia             ARM            Central government debt, total (% of … GC.DOD.TOTL.… 50.02842068637…
+## 10 Aruba               ABW            Central government debt, total (% of … GC.DOD.TOTL.… ..             
+## # ℹ 261 more rows
+## 
+## [[2]]
+## # A tibble: 271 × 5
+##    `Country Name`      `Country Code` `Series Name`                          `Series Code` `2019 [YR2019]`
+##    &lt;chr&gt;               &lt;chr&gt;          &lt;chr&gt;                                  &lt;chr&gt;         &lt;chr&gt;          
+##  1 Afghanistan         AFG            Foreign direct investment, net inflow… BX.KLT.DINV.… 0.124495985791…
+##  2 Albania             ALB            Foreign direct investment, net inflow… BX.KLT.DINV.… 7.797920483865…
+##  3 Algeria             DZA            Foreign direct investment, net inflow… BX.KLT.DINV.… 0.804144058246…
+##  4 American Samoa      ASM            Foreign direct investment, net inflow… BX.KLT.DINV.… ..             
+##  5 Andorra             AND            Foreign direct investment, net inflow… BX.KLT.DINV.… ..             
+##  6 Angola              AGO            Foreign direct investment, net inflow… BX.KLT.DINV.… -5.78081314444…
+##  7 Antigua and Barbuda ATG            Foreign direct investment, net inflow… BX.KLT.DINV.… 7.433324076307…
+##  8 Argentina           ARG            Foreign direct investment, net inflow… BX.KLT.DINV.… 1.485006875706…
+##  9 Armenia             ARM            Foreign direct investment, net inflow… BX.KLT.DINV.… 0.736361516844…
+## 10 Aruba               ABW            Foreign direct investment, net inflow… BX.KLT.DINV.… -2.21528256776…
+## # ℹ 261 more rows
+## 
+## [[3]]
+## # A tibble: 271 × 5
+##    `Country Name`      `Country Code` `Series Name`    `Series Code`  `2019 [YR2019]` 
+##    &lt;chr&gt;               &lt;chr&gt;          &lt;chr&gt;            &lt;chr&gt;          &lt;chr&gt;           
+##  1 Afghanistan         AFG            Trade (% of GDP) NE.TRD.GNFS.ZS ..              
+##  2 Albania             ALB            Trade (% of GDP) NE.TRD.GNFS.ZS 76.2791946495763
+##  3 Algeria             DZA            Trade (% of GDP) NE.TRD.GNFS.ZS 51.8097384415762
+##  4 American Samoa      ASM            Trade (% of GDP) NE.TRD.GNFS.ZS 156.568778979907
+##  5 Andorra             AND            Trade (% of GDP) NE.TRD.GNFS.ZS ..              
+##  6 Angola              AGO            Trade (% of GDP) NE.TRD.GNFS.ZS 57.8295381183036
+##  7 Antigua and Barbuda ATG            Trade (% of GDP) NE.TRD.GNFS.ZS 137.625175755884
+##  8 Argentina           ARG            Trade (% of GDP) NE.TRD.GNFS.ZS 32.6306150458499
+##  9 Armenia             ARM            Trade (% of GDP) NE.TRD.GNFS.ZS 96.1141541288708
+## 10 Aruba               ABW            Trade (% of GDP) NE.TRD.GNFS.ZS 145.343572735289
+## # ℹ 261 more rows
+## 
+## [[4]]
+## # A tibble: 271 × 5
+##    `Country Name`      `Country Code` `Series Name`                          `Series Code` `2019 [YR2019]`
+##    &lt;chr&gt;               &lt;chr&gt;          &lt;chr&gt;                                  &lt;chr&gt;         &lt;chr&gt;          
+##  1 Afghanistan         AFG            Urban population (% of total populati… SP.URB.TOTL.… 25.754         
+##  2 Albania             ALB            Urban population (% of total populati… SP.URB.TOTL.… 61.229         
+##  3 Algeria             DZA            Urban population (% of total populati… SP.URB.TOTL.… 73.189         
+##  4 American Samoa      ASM            Urban population (% of total populati… SP.URB.TOTL.… 87.147         
+##  5 Andorra             AND            Urban population (% of total populati… SP.URB.TOTL.… 87.984         
+##  6 Angola              AGO            Urban population (% of total populati… SP.URB.TOTL.… 66.177         
+##  7 Antigua and Barbuda ATG            Urban population (% of total populati… SP.URB.TOTL.… 24.506         
+##  8 Argentina           ARG            Urban population (% of total populati… SP.URB.TOTL.… 91.991         
+##  9 Armenia             ARM            Urban population (% of total populati… SP.URB.TOTL.… 63.219         
+## 10 Aruba               ABW            Urban population (% of total populati… SP.URB.TOTL.… 43.546         
+## # ℹ 261 more rows</code></pre>
+<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb245-1"><a href="working-with-multiple-datasets.html#cb245-1" tabindex="-1"></a><span class="co"># removes CSV extension from &quot;worldbank_filenames&quot;</span></span>
+<span id="cb245-2"><a href="working-with-multiple-datasets.html#cb245-2" tabindex="-1"></a>worldbank_filenames_base<span class="ot">&lt;-</span><span class="fu">str_remove</span>(worldbank_filenames, <span class="st">&quot;.csv&quot;</span>)</span>
+<span id="cb245-3"><a href="working-with-multiple-datasets.html#cb245-3" tabindex="-1"></a></span>
+<span id="cb245-4"><a href="working-with-multiple-datasets.html#cb245-4" tabindex="-1"></a><span class="co"># assigns names to datasets in &quot;world_bank_list&quot;</span></span>
+<span id="cb245-5"><a href="working-with-multiple-datasets.html#cb245-5" tabindex="-1"></a><span class="fu">names</span>(world_bank_list)<span class="ot">&lt;-</span>worldbank_filenames_base</span></code></pre></div>
+<div class="sourceCode" id="cb246"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb246-1"><a href="working-with-multiple-datasets.html#cb246-1" tabindex="-1"></a><span class="co"># extracts fdi dataset from &quot;world_bank_list&quot; by assigned name</span></span>
+<span id="cb246-2"><a href="working-with-multiple-datasets.html#cb246-2" tabindex="-1"></a>world_bank_list[[<span class="st">&quot;wdi_fdi2019&quot;</span>]]</span></code></pre></div>
+<pre><code>## # A tibble: 271 × 5
+##    `Country Name`      `Country Code` `Series Name`                          `Series Code` `2019 [YR2019]`
+##    &lt;chr&gt;               &lt;chr&gt;          &lt;chr&gt;                                  &lt;chr&gt;         &lt;chr&gt;          
+##  1 Afghanistan         AFG            Foreign direct investment, net inflow… BX.KLT.DINV.… 0.124495985791…
+##  2 Albania             ALB            Foreign direct investment, net inflow… BX.KLT.DINV.… 7.797920483865…
+##  3 Algeria             DZA            Foreign direct investment, net inflow… BX.KLT.DINV.… 0.804144058246…
+##  4 American Samoa      ASM            Foreign direct investment, net inflow… BX.KLT.DINV.… ..             
+##  5 Andorra             AND            Foreign direct investment, net inflow… BX.KLT.DINV.… ..             
+##  6 Angola              AGO            Foreign direct investment, net inflow… BX.KLT.DINV.… -5.78081314444…
+##  7 Antigua and Barbuda ATG            Foreign direct investment, net inflow… BX.KLT.DINV.… 7.433324076307…
+##  8 Argentina           ARG            Foreign direct investment, net inflow… BX.KLT.DINV.… 1.485006875706…
+##  9 Armenia             ARM            Foreign direct investment, net inflow… BX.KLT.DINV.… 0.736361516844…
+## 10 Aruba               ABW            Foreign direct investment, net inflow… BX.KLT.DINV.… -2.21528256776…
+## # ℹ 261 more rows</code></pre>
+<div class="sourceCode" id="cb248"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb248-1"><a href="working-with-multiple-datasets.html#cb248-1" tabindex="-1"></a><span class="co"># extracts fdi dataset from &quot;world_bank_list&quot; by index</span></span>
+<span id="cb248-2"><a href="working-with-multiple-datasets.html#cb248-2" tabindex="-1"></a>world_bank_list[[<span class="dv">2</span>]]</span></code></pre></div>
+<pre><code>## # A tibble: 271 × 5
+##    `Country Name`      `Country Code` `Series Name`                          `Series Code` `2019 [YR2019]`
+##    &lt;chr&gt;               &lt;chr&gt;          &lt;chr&gt;                                  &lt;chr&gt;         &lt;chr&gt;          
+##  1 Afghanistan         AFG            Foreign direct investment, net inflow… BX.KLT.DINV.… 0.124495985791…
+##  2 Albania             ALB            Foreign direct investment, net inflow… BX.KLT.DINV.… 7.797920483865…
+##  3 Algeria             DZA            Foreign direct investment, net inflow… BX.KLT.DINV.… 0.804144058246…
+##  4 American Samoa      ASM            Foreign direct investment, net inflow… BX.KLT.DINV.… ..             
+##  5 Andorra             AND            Foreign direct investment, net inflow… BX.KLT.DINV.… ..             
+##  6 Angola              AGO            Foreign direct investment, net inflow… BX.KLT.DINV.… -5.78081314444…
+##  7 Antigua and Barbuda ATG            Foreign direct investment, net inflow… BX.KLT.DINV.… 7.433324076307…
+##  8 Argentina           ARG            Foreign direct investment, net inflow… BX.KLT.DINV.… 1.485006875706…
+##  9 Armenia             ARM            Foreign direct investment, net inflow… BX.KLT.DINV.… 0.736361516844…
+## 10 Aruba               ABW            Foreign direct investment, net inflow… BX.KLT.DINV.… -2.21528256776…
+## # ℹ 261 more rows</code></pre>
 </div>
-<div id="automating-data-processing-tasks" class="section level2 hasAnchor" number="12.2">
-<h2><span class="header-section-number">12.2</span> Automating data processing tasks<a href="working-with-multiple-datasets.html#automating-data-processing-tasks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="merging-data" class="section level2 hasAnchor" number="12.2">
+<h2><span class="header-section-number">12.2</span> Merging Data<a href="working-with-multiple-datasets.html#merging-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb250-1"><a href="working-with-multiple-datasets.html#cb250-1" tabindex="-1"></a><span class="co"># extracts World Bank FDI dataset and assigns it to a new object named WB_fdi</span></span>
+<span id="cb250-2"><a href="working-with-multiple-datasets.html#cb250-2" tabindex="-1"></a>WB_fdi<span class="ot">&lt;-</span>world_bank_list[[<span class="dv">2</span>]]</span></code></pre></div>
+<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb251-1"><a href="working-with-multiple-datasets.html#cb251-1" tabindex="-1"></a><span class="co"># extracts World Bank debt dataset and assigns it to a new object named WB_debt</span></span>
+<span id="cb251-2"><a href="working-with-multiple-datasets.html#cb251-2" tabindex="-1"></a>WB_debt<span class="ot">&lt;-</span>world_bank_list[[<span class="dv">1</span>]]</span></code></pre></div>
+</div>
+<div id="appending-data" class="section level2 hasAnchor" number="12.3">
+<h2><span class="header-section-number">12.3</span> Appending Data<a href="working-with-multiple-datasets.html#appending-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="reshaping-data" class="section level2 hasAnchor" number="12.4">
+<h2><span class="header-section-number">12.4</span> Reshaping Data<a href="working-with-multiple-datasets.html#reshaping-data" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="automating-data-processing-tasks" class="section level2 hasAnchor" number="12.5">
+<h2><span class="header-section-number">12.5</span> Automating data processing tasks<a href="working-with-multiple-datasets.html#automating-data-processing-tasks" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb252-1"><a href="working-with-multiple-datasets.html#cb252-1" tabindex="-1"></a><span class="co"># write function to World Bank dataset</span></span>
+<span id="cb252-2"><a href="working-with-multiple-datasets.html#cb252-2" tabindex="-1"></a>worldbank_cleaning_function<span class="ot">&lt;-</span><span class="cf">function</span>(input_dataset){</span>
+<span id="cb252-3"><a href="working-with-multiple-datasets.html#cb252-3" tabindex="-1"></a>  modified_dataset<span class="ot">&lt;-</span>input_dataset <span class="sc">%&gt;%</span> </span>
+<span id="cb252-4"><a href="working-with-multiple-datasets.html#cb252-4" tabindex="-1"></a>                      <span class="fu">select</span>(<span class="sc">-</span><span class="st">&quot;Series Code&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb252-5"><a href="working-with-multiple-datasets.html#cb252-5" tabindex="-1"></a>                      <span class="fu">rename</span>(<span class="st">&quot;Country&quot;</span><span class="ot">=</span><span class="st">&quot;Country Name&quot;</span>,</span>
+<span id="cb252-6"><a href="working-with-multiple-datasets.html#cb252-6" tabindex="-1"></a>                             <span class="st">&quot;CountryCode&quot;</span><span class="ot">=</span><span class="st">&quot;Country Code&quot;</span>,</span>
+<span id="cb252-7"><a href="working-with-multiple-datasets.html#cb252-7" tabindex="-1"></a>                             <span class="st">&quot;Series&quot;</span><span class="ot">=</span><span class="st">&quot;Series Name&quot;</span>,</span>
+<span id="cb252-8"><a href="working-with-multiple-datasets.html#cb252-8" tabindex="-1"></a>                             <span class="st">&quot;2019&quot;</span><span class="ot">=</span><span class="st">&quot;2019 [YR2019]&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb252-9"><a href="working-with-multiple-datasets.html#cb252-9" tabindex="-1"></a>                      <span class="fu">drop_na</span>(CountryCode)</span>
+<span id="cb252-10"><a href="working-with-multiple-datasets.html#cb252-10" tabindex="-1"></a>  <span class="fu">return</span>(modified_dataset)</span>
+<span id="cb252-11"><a href="working-with-multiple-datasets.html#cb252-11" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb253-1"><a href="working-with-multiple-datasets.html#cb253-1" tabindex="-1"></a><span class="co"># Iteratively apply &quot;worldbank_cleaning_function&quot; to all of the datasets in &quot;world_bank_list&quot;, and deposit the cleaned datasets into a new list named &quot;world_bank_list_cleaned&quot;</span></span>
+<span id="cb253-2"><a href="working-with-multiple-datasets.html#cb253-2" tabindex="-1"></a>world_bank_list_cleaned<span class="ot">&lt;-</span><span class="fu">map</span>(world_bank_list, worldbank_cleaning_function)</span></code></pre></div>
 </div>
 </div>
             </section>

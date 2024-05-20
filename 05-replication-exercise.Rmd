@@ -1,4 +1,8 @@
-# (PART) Replication Exercise in R {-}
+# (PART) Exercises in R {-}
 
-# Replication Exercise Overview
+# Practice Exercises
+
+# Replication Exercise
+
+
 

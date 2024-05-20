@@ -23,7 +23,7 @@
 <meta name="author" content="Aditya Ranganath" />
 
 
-<meta name="date" content="2024-02-15" />
+<meta name="date" content="2024-05-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -221,8 +221,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html"><i class="fa fa-check"></i><b>12</b> Working with multiple datasets</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#merging-data"><i class="fa fa-check"></i><b>12.1</b> Merging data</a></li>
-<li class="chapter" data-level="12.2" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#automating-data-processing-tasks"><i class="fa fa-check"></i><b>12.2</b> Automating data processing tasks</a></li>
+<li class="chapter" data-level="12.1" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#reading-in-multiple-files"><i class="fa fa-check"></i><b>12.1</b> Reading in multiple files</a></li>
+<li class="chapter" data-level="12.2" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#merging-data"><i class="fa fa-check"></i><b>12.2</b> Merging Data</a></li>
+<li class="chapter" data-level="12.3" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#appending-data"><i class="fa fa-check"></i><b>12.3</b> Appending Data</a></li>
+<li class="chapter" data-level="12.4" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#reshaping-data"><i class="fa fa-check"></i><b>12.4</b> Reshaping Data</a></li>
+<li class="chapter" data-level="12.5" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#automating-data-processing-tasks"><i class="fa fa-check"></i><b>12.5</b> Automating data processing tasks</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html"><i class="fa fa-check"></i><b>13</b> Data Transfer Part 2: Exporting data</a>
 <ul>
@@ -230,8 +233,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html#exporting-multiple-data-frames"><i class="fa fa-check"></i><b>13.2</b> Exporting multiple data frames</a></li>
 <li class="chapter" data-level="13.3" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html#exporting-other-objects-i.e.-visualizations"><i class="fa fa-check"></i><b>13.3</b> Exporting other objects (i.e. visualizations)</a></li>
 </ul></li>
-<li class="part"><span><b>III Replication Exercise in R</b></span></li>
-<li class="chapter" data-level="14" data-path="replication-exercise-overview.html"><a href="replication-exercise-overview.html"><i class="fa fa-check"></i><b>14</b> Replication Exercise Overview</a></li>
+<li class="part"><span><b>III Exercises in R</b></span></li>
+<li class="chapter" data-level="14" data-path="practice-exercises.html"><a href="practice-exercises.html"><i class="fa fa-check"></i><b>14</b> Practice Exercises</a></li>
+<li class="chapter" data-level="15" data-path="replication-exercise.html"><a href="replication-exercise.html"><i class="fa fa-check"></i><b>15</b> Replication Exercise</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -476,7 +480,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb234-5"><a href="elementary-data-analysis.html#cb234-5" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>conf.low, <span class="at">ymax=</span>conf.high),<span class="at">width=</span><span class="fl">0.05</span>)<span class="sc">+</span></span>
 <span id="cb234-6"><a href="elementary-data-analysis.html#cb234-6" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks=</span>(<span class="fu">seq</span>(<span class="dv">0</span>,<span class="dv">1</span>, <span class="at">by=</span><span class="dv">1</span>)))<span class="sc">+</span></span>
 <span id="cb234-7"><a href="elementary-data-analysis.html#cb234-7" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">&quot;Predicted Effects of Federalism on Gov&#39;t Expenditure</span><span class="sc">\n</span><span class="st">(with trade set to mean)&quot;</span>, <span class="at">y=</span><span class="st">&quot;Predicted Expenditure&quot;</span>, <span class="at">x=</span><span class="st">&quot;Federalism&quot;</span>)</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-175-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-190-1.png" width="672" /></p>
 </div>
 </div>
 <div id="creating-and-exporting-regression-tables" class="section level2 hasAnchor" number="11.5">

@@ -23,7 +23,7 @@
 <meta name="author" content="Aditya Ranganath" />
 
 
-<meta name="date" content="2024-02-15" />
+<meta name="date" content="2024-05-19" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -221,8 +221,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="12" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html"><i class="fa fa-check"></i><b>12</b> Working with multiple datasets</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#merging-data"><i class="fa fa-check"></i><b>12.1</b> Merging data</a></li>
-<li class="chapter" data-level="12.2" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#automating-data-processing-tasks"><i class="fa fa-check"></i><b>12.2</b> Automating data processing tasks</a></li>
+<li class="chapter" data-level="12.1" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#reading-in-multiple-files"><i class="fa fa-check"></i><b>12.1</b> Reading in multiple files</a></li>
+<li class="chapter" data-level="12.2" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#merging-data"><i class="fa fa-check"></i><b>12.2</b> Merging Data</a></li>
+<li class="chapter" data-level="12.3" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#appending-data"><i class="fa fa-check"></i><b>12.3</b> Appending Data</a></li>
+<li class="chapter" data-level="12.4" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#reshaping-data"><i class="fa fa-check"></i><b>12.4</b> Reshaping Data</a></li>
+<li class="chapter" data-level="12.5" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#automating-data-processing-tasks"><i class="fa fa-check"></i><b>12.5</b> Automating data processing tasks</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html"><i class="fa fa-check"></i><b>13</b> Data Transfer Part 2: Exporting data</a>
 <ul>
@@ -230,8 +233,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.2" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html#exporting-multiple-data-frames"><i class="fa fa-check"></i><b>13.2</b> Exporting multiple data frames</a></li>
 <li class="chapter" data-level="13.3" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html#exporting-other-objects-i.e.-visualizations"><i class="fa fa-check"></i><b>13.3</b> Exporting other objects (i.e. visualizations)</a></li>
 </ul></li>
-<li class="part"><span><b>III Replication Exercise in R</b></span></li>
-<li class="chapter" data-level="14" data-path="replication-exercise-overview.html"><a href="replication-exercise-overview.html"><i class="fa fa-check"></i><b>14</b> Replication Exercise Overview</a></li>
+<li class="part"><span><b>III Exercises in R</b></span></li>
+<li class="chapter" data-level="14" data-path="practice-exercises.html"><a href="practice-exercises.html"><i class="fa fa-check"></i><b>14</b> Practice Exercises</a></li>
+<li class="chapter" data-level="15" data-path="replication-exercise.html"><a href="replication-exercise.html"><i class="fa fa-check"></i><b>15</b> Replication Exercise</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -283,7 +287,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s see what <code>cgexp_africa</code> looks like:</p>
 <div class="sourceCode" id="cb185"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb185-1"><a href="exploratory-visualization.html#cb185-1" tabindex="-1"></a><span class="co"># prints contents of cgexp_africa</span></span>
 <span id="cb185-2"><a href="exploratory-visualization.html#cb185-2" tabindex="-1"></a>cgexp_africa</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-143-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
 <p>This is a nice start, but it may look a bit cleaner if we arrayed the chart in ascending order with respect to the cgexp variable. To do so, we can slightly change our aesthetic mapping to look like this: <code>aes(x=reorder(country, cgexp), y=cgexp))</code>. This indicates that we’d still like the “cgexp” variable on the y-axis, and countries on the x-axis; however, we’d also like to order countries in ascending order with respect to the “cgexp” variable. We’ll assign this modified chart to a new object named <code>cgexp_africa_ascending</code>:</p>
 <div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb186-1"><a href="exploratory-visualization.html#cb186-1" tabindex="-1"></a><span class="co"># Creates a bar chart of the &quot;cgexp&quot; variable (central government expenditure as a share of GDP) for the Africa observations; countries are on the x axis and arrayed in ascending order with respect to the cgexp variable, which is on the y-axis; plot is assigned to an object named &quot;cgexp_africa_ascending&quot;</span></span>
 <span id="cb186-2"><a href="exploratory-visualization.html#cb186-2" tabindex="-1"></a>cgexp_africa_ascending<span class="ot">&lt;-</span></span>
@@ -298,7 +302,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>All other apsects of the code are the same as before. Let’s see what the modified chart looks like:</p>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb187-1"><a href="exploratory-visualization.html#cb187-1" tabindex="-1"></a><span class="co"># prints &quot;cgexp_africa_ascending&quot;</span></span>
 <span id="cb187-2"><a href="exploratory-visualization.html#cb187-2" tabindex="-1"></a>cgexp_africa_ascending</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-145-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-160-1.png" width="672" /></p>
 <p>If, instead of arrange the countries in asscending order with respect to the “cgexp” variable, we want to arrange them in descending order, we can simply put a “-” before “cgexp” within the aesthetic mapping; we’ll assign the modified chart to a new object named <code>cgexp_africa_descending</code>:</p>
 <div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb188-1"><a href="exploratory-visualization.html#cb188-1" tabindex="-1"></a><span class="co"># Creates a bar chart of the &quot;cgexp&quot; variable (central government expenditure as a share of GDP) for the Africa observations; countries are on the x axis and arrayed in descending order with respect to the cgexp variable, which is on the y-axis; plot is assigned to an object named &quot;cgexp_africa_descending&quot;</span></span>
 <span id="cb188-2"><a href="exploratory-visualization.html#cb188-2" tabindex="-1"></a>cgexp_africa_descending<span class="ot">&lt;-</span></span>
@@ -313,7 +317,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s see how the <code>cgexp_africa_descending</code> plot now looks:</p>
 <div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb189-1"><a href="exploratory-visualization.html#cb189-1" tabindex="-1"></a><span class="co"># prints contents of &quot;cgexp_africa_descending&quot;</span></span>
 <span id="cb189-2"><a href="exploratory-visualization.html#cb189-2" tabindex="-1"></a>cgexp_africa_descending</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-162-1.png" width="672" /></p>
 <p>Sometimes, you may wish to invert the axes of your charts, which you can do using the <code>coord_flip()</code> function. The code below takes the <code>cgexp_africa_ascending</code> chart we created above, inverts the axes using <code>coord_flip()</code>, and assigns the result to a new object named <code>cgexp_africa_ascending_inverted</code>:</p>
 <div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb190-1"><a href="exploratory-visualization.html#cb190-1" tabindex="-1"></a><span class="co"># creates a sideways bar chart using the &quot;coord_flip&quot; function and assigns it to a new object named &quot;cgexp_africa_ascending_inverted&quot;  </span></span>
 <span id="cb190-2"><a href="exploratory-visualization.html#cb190-2" tabindex="-1"></a>cgexp_africa_ascending_inverted<span class="ot">&lt;-</span>cgexp_africa_ascending<span class="sc">+</span></span>
@@ -321,7 +325,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Let’s see what <code>cgexp_africa_ascending_inverted</code> looks like:</p>
 <div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb191-1"><a href="exploratory-visualization.html#cb191-1" tabindex="-1"></a><span class="co"># prints &quot;cgexp_africa_ascending_inverted&quot;</span></span>
 <span id="cb191-2"><a href="exploratory-visualization.html#cb191-2" tabindex="-1"></a>cgexp_africa_ascending_inverted</span></code></pre></div>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-149-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-164-1.png" width="672" /></p>
 </div>
 <div id="scatterplots" class="section level2 hasAnchor" number="10.2">
 <h2><span class="header-section-number">10.2</span> Scatterplots<a href="exploratory-visualization.html#scatterplots" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -337,7 +341,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb193-1"><a href="exploratory-visualization.html#cb193-1" tabindex="-1"></a><span class="co"># prints contents of &quot;scatter_cgexp_trade&quot;</span></span>
 <span id="cb193-2"><a href="exploratory-visualization.html#cb193-2" tabindex="-1"></a>scatter_cgexp_trade</span></code></pre></div>
 <pre><code>## Warning: Removed 3 rows containing missing values (`geom_point()`).</code></pre>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-151-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-166-1.png" width="672" /></p>
 <p>Sometimes, you may wish to distinguish between different groups in a scatterplot. One way to do that is to assign different colors to different groups of interest. For example, if we wanted to distinguish continents in the scatterplot, we could specify <code>color=continent</code> in the aesthetic mapping. The code below does so, and assigns the result to a new object named <code>scatter_cgexp_trade_grouped</code>:</p>
 <div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb195-1"><a href="exploratory-visualization.html#cb195-1" tabindex="-1"></a><span class="co"># Creates scatterplot with &quot;cgexp&quot; variable on x-axis and &quot;trade&quot; variable on y-axis, and uses different color points for different continents; plot is assigned to object named &quot;scatter_cgexp_trade_grouped&quot;</span></span>
 <span id="cb195-2"><a href="exploratory-visualization.html#cb195-2" tabindex="-1"></a>scatter_cgexp_trade_grouped<span class="ot">&lt;-</span></span>
@@ -350,7 +354,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb196"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb196-1"><a href="exploratory-visualization.html#cb196-1" tabindex="-1"></a><span class="co"># prints contents of &quot;scatter_cgexp_trade_grouped&quot;</span></span>
 <span id="cb196-2"><a href="exploratory-visualization.html#cb196-2" tabindex="-1"></a>scatter_cgexp_trade_grouped</span></code></pre></div>
 <pre><code>## Warning: Removed 3 rows containing missing values (`geom_point()`).</code></pre>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-153-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-168-1.png" width="672" /></p>
 <p>An alternative way of parsing categories is to use facets, which create separate visualizations for each of the different categories in a dataset. Below, for example, we create separate scatterplots for each continent (this is specified by the final line in the code, <code>facet_wrap(~continent, nrow=2))</code>:</p>
 <div class="sourceCode" id="cb198"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb198-1"><a href="exploratory-visualization.html#cb198-1" tabindex="-1"></a><span class="co"># Creates continent-level subplots for scatterplot, using facets; assigns plot to new object named &quot;scatter_cgexp_trade_facets&quot;</span></span>
 <span id="cb198-2"><a href="exploratory-visualization.html#cb198-2" tabindex="-1"></a>scatter_cgexp_trade_facets<span class="ot">&lt;-</span></span>
@@ -360,7 +364,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb199-1"><a href="exploratory-visualization.html#cb199-1" tabindex="-1"></a><span class="co"># prints contents of &quot;scatter_cgexp_trade_facets&quot;</span></span>
 <span id="cb199-2"><a href="exploratory-visualization.html#cb199-2" tabindex="-1"></a>scatter_cgexp_trade_facets</span></code></pre></div>
 <pre><code>## Warning: Removed 3 rows containing missing values (`geom_point()`).</code></pre>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-170-1.png" width="672" /></p>
 <p>Finally, it’s important to note that it’s possible to layer different geometries over each other. For example, the code below plots a scatterplot for the <code>pt_copy</code> dataset with the “cgexp” variable on the x axis and the trade variable on the y-axis, but also plots a line of best fit on top of the scatterplot with <code>geom_smooth(aes(x=cgexp, y=trade), method="lm")</code>; we’ll assign the resulting plot to <code>scatter_cgexp_trade_line</code>:</p>
 <div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb201-1"><a href="exploratory-visualization.html#cb201-1" tabindex="-1"></a><span class="co"># Creates scatterplot with &quot;cgexp&quot; variable on x-axis and &quot;trade&quot; variiable on y-axis, adds line of best fit; plot assigned to object named &quot;scatter_cgexp_trade_line&quot;</span></span>
 <span id="cb201-2"><a href="exploratory-visualization.html#cb201-2" tabindex="-1"></a>scatter_cgexp_trade_line<span class="ot">&lt;-</span></span>
@@ -375,7 +379,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## `geom_smooth()` using formula = &#39;y ~ x&#39;</code></pre>
 <pre><code>## Warning: Removed 3 rows containing non-finite values (`stat_smooth()`).</code></pre>
 <pre><code>## Warning: Removed 3 rows containing missing values (`geom_point()`).</code></pre>
-<p><img src="bookdownproj_files/figure-html/unnamed-chunk-157-1.png" width="672" /></p>
+<p><img src="bookdownproj_files/figure-html/unnamed-chunk-172-1.png" width="672" /></p>
 </div>
 </div>
             </section>

@@ -962,15 +962,104 @@ stargazer(model_list, type="html", out="cgexp_regressions.html")
 
 # Working with multiple datasets
 
-## Merging data 
+## Reading in multiple files
+
+```{r, echo=-1}
+setwd("data/wb")
+# extracts file names in working directory
+worldbank_filenames<-list.files()
+```
+
+```{r}
+# prints file names in working directory
+worldbank_filenames
+```
+
+```{r}
+setwd("data/wb")
+# iteratively reads in World Bank files from working directory and assigns them to a new list object named "world_bank_list"
+world_bank_list<-map(worldbank_filenames, read_csv)
+```
+
+```{r}
+# prints datasets in "world_bank_list"
+world_bank_list
+```
+
+
+```{r}
+# removes CSV extension from "worldbank_filenames"
+worldbank_filenames_base<-str_remove(worldbank_filenames, ".csv")
+
+# assigns names to datasets in "world_bank_list"
+names(world_bank_list)<-worldbank_filenames_base
+```
+
+```{r}
+# extracts fdi dataset from "world_bank_list" by assigned name
+world_bank_list[["wdi_fdi2019"]]
+```
+
+```{r}
+# extracts fdi dataset from "world_bank_list" by index
+world_bank_list[[2]]
+```
+
+## Merging Data
+
+```{r}
+# extracts World Bank FDI dataset and assigns it to a new object named WB_fdi
+WB_fdi<-world_bank_list[[2]]
+```
+
+```{r}
+# extracts World Bank debt dataset and assigns it to a new object named WB_debt
+WB_debt<-world_bank_list[[1]]
+```
+
+
+## Appending Data
+
+## Reshaping Data
 
 ## Automating data processing tasks
+
+```{r}
+# write function to World Bank dataset
+worldbank_cleaning_function<-function(input_dataset){
+  modified_dataset<-input_dataset %>% 
+                      select(-"Series Code") %>% 
+                      rename("Country"="Country Name",
+                             "CountryCode"="Country Code",
+                             "Series"="Series Name",
+                             "2019"="2019 [YR2019]") %>% 
+                      drop_na(CountryCode)
+  return(modified_dataset)
+}
+```
+
+```{r}
+# Iteratively apply "worldbank_cleaning_function" to all of the datasets in "world_bank_list", and deposit the cleaned datasets into a new list named "world_bank_list_cleaned"
+world_bank_list_cleaned<-map(world_bank_list, worldbank_cleaning_function)
+```
+
 
 # Data Transfer Part 2: Exporting data
 
 ## Exporting a data frame
 
 ## Exporting multiple data frames
+
+```{r}
+# create file names for exported World Bank files
+WB_filenames_export<-paste0(worldbank_filenames_base, "_cleaned.csv")
+```
+
+```{r, echo=-1}
+setwd("exported_objects")
+# exports datasets in "world_bank_list_cleaned" to working directory using filenames in "WB_filenames_export"
+walk2(world_bank_list_cleaned, WB_filenames_export, write_csv)
+```
 
 ## Exporting other objects (i.e. visualizations)
 
