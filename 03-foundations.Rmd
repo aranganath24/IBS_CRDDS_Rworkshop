@@ -124,6 +124,12 @@ It is also worth emphasizing that object names are case sensitive; in order to p
 our_Location
 ```
 
+In order to keep track of the objects we have created, we can use the handy ```ls()``` function, which will print the names of all the objects that are in memory:
+
+```{r}
+# prints objects in memory
+ls()
+```
 
 # Data Structures
 
@@ -438,6 +444,10 @@ fahrenheit_to_celsius_converter(fahrenheit_input=22)
 In short, we can specify any value for the "fahrenheit_input" argument; this value will be substituted for "fahrenheit_input" in the expression ```celsius_output<-(fahrenheit_input-32)*(5/9)```, after which the value of ```celsius_output``` will be returned to us. 
 
 Even though the Fahrenheit to Celsius conversion formula is not particularly complex, it is clear that writing a function to perform this calculation is nonetheless more efficient than repeatedly performing the relevant arithmetic operation. As the operations you need to perform on your data become more complex, and the number of times you need to perform those operations increases, the benefits of wrapping those operations into a function become ever-more apparent. 
+
+# Global and Local Environments
+
+# R Packages
 
 # Iteration
 

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>7 Iteration | An R Primer for Social Scientists</title>
-  <meta name="description" content="7 Iteration | An R Primer for Social Scientists" />
+  <title>9 Iteration | An R Primer for Social Scientists</title>
+  <meta name="description" content="9 Iteration | An R Primer for Social Scientists" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="7 Iteration | An R Primer for Social Scientists" />
+  <meta property="og:title" content="9 Iteration | An R Primer for Social Scientists" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="7 Iteration | An R Primer for Social Scientists" />
+  <meta name="twitter:title" content="9 Iteration | An R Primer for Social Scientists" />
   
   
   
@@ -23,14 +23,14 @@
 <meta name="author" content="Aditya Ranganath" />
 
 
-<meta name="date" content="2024-05-19" />
+<meta name="date" content="2024-05-20" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="writing-functions.html"/>
+<link rel="prev" href="r-packages.html"/>
 <link rel="next" href="data-transfer-part-1-importing-data-into-r-studio.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -171,71 +171,74 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.4" data-path="data-structures.html"><a href="data-structures.html#identifying-data-structures"><i class="fa fa-check"></i><b>5.4</b> Identifying Data Structures</a></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="writing-functions.html"><a href="writing-functions.html"><i class="fa fa-check"></i><b>6</b> Writing Functions</a></li>
-<li class="chapter" data-level="7" data-path="iteration.html"><a href="iteration.html"><i class="fa fa-check"></i><b>7</b> Iteration</a></li>
+<li class="chapter" data-level="7" data-path="global-and-local-environments.html"><a href="global-and-local-environments.html"><i class="fa fa-check"></i><b>7</b> Global and Local Environments</a></li>
+<li class="chapter" data-level="8" data-path="r-packages.html"><a href="r-packages.html"><i class="fa fa-check"></i><b>8</b> R Packages</a></li>
+<li class="chapter" data-level="9" data-path="iteration.html"><a href="iteration.html"><i class="fa fa-check"></i><b>9</b> Iteration</a></li>
 <li class="part"><span><b>II Applied Data Research in R</b></span></li>
-<li class="chapter" data-level="8" data-path="data-transfer-part-1-importing-data-into-r-studio.html"><a href="data-transfer-part-1-importing-data-into-r-studio.html"><i class="fa fa-check"></i><b>8</b> Data Transfer Part 1: Importing Data into R Studio</a>
+<li class="chapter" data-level="10" data-path="data-transfer-part-1-importing-data-into-r-studio.html"><a href="data-transfer-part-1-importing-data-into-r-studio.html"><i class="fa fa-check"></i><b>10</b> Data Transfer Part 1: Importing Data into R Studio</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="data-transfer-part-1-importing-data-into-r-studio.html"><a href="data-transfer-part-1-importing-data-into-r-studio.html#reading-in-a-dataset-from-a-directory-on-your-computer"><i class="fa fa-check"></i><b>8.1</b> Reading in a dataset from a directory on your computer</a></li>
-<li class="chapter" data-level="8.2" data-path="data-transfer-part-1-importing-data-into-r-studio.html"><a href="data-transfer-part-1-importing-data-into-r-studio.html#reading-in-multiple-datasets-from-your-disk"><i class="fa fa-check"></i><b>8.2</b> Reading in multiple datasets from your disk</a></li>
-<li class="chapter" data-level="8.3" data-path="data-transfer-part-1-importing-data-into-r-studio.html"><a href="data-transfer-part-1-importing-data-into-r-studio.html#reading-in-a-dataset-from-cloud-storage"><i class="fa fa-check"></i><b>8.3</b> Reading in a dataset from cloud storage</a></li>
-<li class="chapter" data-level="8.4" data-path="data-transfer-part-1-importing-data-into-r-studio.html"><a href="data-transfer-part-1-importing-data-into-r-studio.html#reading-in-data-from-an-r-package"><i class="fa fa-check"></i><b>8.4</b> Reading in data from an R package</a></li>
-<li class="chapter" data-level="8.5" data-path="data-transfer-part-1-importing-data-into-r-studio.html"><a href="data-transfer-part-1-importing-data-into-r-studio.html#reading-in-data-from-a-website"><i class="fa fa-check"></i><b>8.5</b> Reading in data from a website</a></li>
+<li class="chapter" data-level="10.1" data-path="data-transfer-part-1-importing-data-into-r-studio.html"><a href="data-transfer-part-1-importing-data-into-r-studio.html#reading-in-a-dataset-from-a-directory-on-your-computer"><i class="fa fa-check"></i><b>10.1</b> Reading in a dataset from a directory on your computer</a></li>
+<li class="chapter" data-level="10.2" data-path="data-transfer-part-1-importing-data-into-r-studio.html"><a href="data-transfer-part-1-importing-data-into-r-studio.html#reading-in-multiple-datasets-from-your-disk"><i class="fa fa-check"></i><b>10.2</b> Reading in multiple datasets from your disk</a></li>
+<li class="chapter" data-level="10.3" data-path="data-transfer-part-1-importing-data-into-r-studio.html"><a href="data-transfer-part-1-importing-data-into-r-studio.html#reading-in-a-dataset-from-cloud-storage"><i class="fa fa-check"></i><b>10.3</b> Reading in a dataset from cloud storage</a></li>
+<li class="chapter" data-level="10.4" data-path="data-transfer-part-1-importing-data-into-r-studio.html"><a href="data-transfer-part-1-importing-data-into-r-studio.html#reading-in-data-from-an-r-package"><i class="fa fa-check"></i><b>10.4</b> Reading in data from an R package</a></li>
+<li class="chapter" data-level="10.5" data-path="data-transfer-part-1-importing-data-into-r-studio.html"><a href="data-transfer-part-1-importing-data-into-r-studio.html#reading-in-data-from-a-website"><i class="fa fa-check"></i><b>10.5</b> Reading in data from a website</a></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html"><i class="fa fa-check"></i><b>9</b> Numeric Data Summarizing, Processing and Wrangling Tasks</a>
+<li class="chapter" data-level="11" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html"><i class="fa fa-check"></i><b>11</b> Numeric Data Summarizing, Processing and Wrangling Tasks</a>
 <ul>
-<li class="chapter" data-level="9.1" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#summary-statistics"><i class="fa fa-check"></i><b>9.1</b> Summary Statistics</a></li>
-<li class="chapter" data-level="9.2" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#basic-data-cleaning-and-preparation-tasks"><i class="fa fa-check"></i><b>9.2</b> Basic Data Cleaning and Preparation Tasks</a>
+<li class="chapter" data-level="11.1" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#summary-statistics"><i class="fa fa-check"></i><b>11.1</b> Summary Statistics</a></li>
+<li class="chapter" data-level="11.2" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#missing-data"><i class="fa fa-check"></i><b>11.2</b> Missing Data</a></li>
+<li class="chapter" data-level="11.3" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#basic-data-cleaning-and-preparation-tasks"><i class="fa fa-check"></i><b>11.3</b> Basic Data Cleaning and Preparation Tasks</a>
 <ul>
-<li class="chapter" data-level="9.2.1" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#rearranging-columns"><i class="fa fa-check"></i><b>9.2.1</b> Rearranging Columns</a></li>
-<li class="chapter" data-level="9.2.2" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#renaming-variables"><i class="fa fa-check"></i><b>9.2.2</b> Renaming Variables</a></li>
-<li class="chapter" data-level="9.2.3" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#sorting-a-dataset-in-ascending-or-descending-order-with-respect-to-a-variable"><i class="fa fa-check"></i><b>9.2.3</b> Sorting a dataset in ascending or descending order with respect to a variable</a></li>
-<li class="chapter" data-level="9.2.4" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#creating-new-variables-based-on-existing-variables"><i class="fa fa-check"></i><b>9.2.4</b> Creating new variables based on existing variables</a></li>
-<li class="chapter" data-level="9.2.5" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#selecting-or-deleting-variables"><i class="fa fa-check"></i><b>9.2.5</b> Selecting or Deleting Variables</a></li>
-<li class="chapter" data-level="9.2.6" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#recoding-variables"><i class="fa fa-check"></i><b>9.2.6</b> Recoding Variables</a></li>
-<li class="chapter" data-level="9.2.7" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#subsetting-variables"><i class="fa fa-check"></i><b>9.2.7</b> Subsetting Variables</a></li>
+<li class="chapter" data-level="11.3.1" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#rearranging-columns"><i class="fa fa-check"></i><b>11.3.1</b> Rearranging Columns</a></li>
+<li class="chapter" data-level="11.3.2" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#renaming-variables"><i class="fa fa-check"></i><b>11.3.2</b> Renaming Variables</a></li>
+<li class="chapter" data-level="11.3.3" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#sorting-a-dataset-in-ascending-or-descending-order-with-respect-to-a-variable"><i class="fa fa-check"></i><b>11.3.3</b> Sorting a dataset in ascending or descending order with respect to a variable</a></li>
+<li class="chapter" data-level="11.3.4" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#creating-new-variables-based-on-existing-variables"><i class="fa fa-check"></i><b>11.3.4</b> Creating new variables based on existing variables</a></li>
+<li class="chapter" data-level="11.3.5" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#selecting-or-deleting-variables"><i class="fa fa-check"></i><b>11.3.5</b> Selecting or Deleting Variables</a></li>
+<li class="chapter" data-level="11.3.6" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#recoding-variables"><i class="fa fa-check"></i><b>11.3.6</b> Recoding Variables</a></li>
+<li class="chapter" data-level="11.3.7" data-path="numeric-data-summarizing-processing-and-wrangling-tasks.html"><a href="numeric-data-summarizing-processing-and-wrangling-tasks.html#subsetting-variables"><i class="fa fa-check"></i><b>11.3.7</b> Subsetting Variables</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="exploratory-visualization.html"><a href="exploratory-visualization.html"><i class="fa fa-check"></i><b>10</b> Exploratory Visualization</a>
+<li class="chapter" data-level="12" data-path="exploratory-visualization.html"><a href="exploratory-visualization.html"><i class="fa fa-check"></i><b>12</b> Exploratory Visualization</a>
 <ul>
-<li class="chapter" data-level="10.1" data-path="exploratory-visualization.html"><a href="exploratory-visualization.html#bar-charts"><i class="fa fa-check"></i><b>10.1</b> Bar Charts</a></li>
-<li class="chapter" data-level="10.2" data-path="exploratory-visualization.html"><a href="exploratory-visualization.html#scatterplots"><i class="fa fa-check"></i><b>10.2</b> Scatterplots</a></li>
+<li class="chapter" data-level="12.1" data-path="exploratory-visualization.html"><a href="exploratory-visualization.html#bar-charts"><i class="fa fa-check"></i><b>12.1</b> Bar Charts</a></li>
+<li class="chapter" data-level="12.2" data-path="exploratory-visualization.html"><a href="exploratory-visualization.html#scatterplots"><i class="fa fa-check"></i><b>12.2</b> Scatterplots</a></li>
 </ul></li>
-<li class="chapter" data-level="11" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html"><i class="fa fa-check"></i><b>11</b> Elementary Data Analysis</a>
+<li class="chapter" data-level="13" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html"><i class="fa fa-check"></i><b>13</b> Elementary Data Analysis</a>
 <ul>
-<li class="chapter" data-level="11.1" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#computing-correlations"><i class="fa fa-check"></i><b>11.1</b> Computing correlations</a>
+<li class="chapter" data-level="13.1" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#computing-correlations"><i class="fa fa-check"></i><b>13.1</b> Computing correlations</a>
 <ul>
-<li class="chapter" data-level="11.1.1" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#computing-correlations-between-two-variables-in-a-dataset"><i class="fa fa-check"></i><b>11.1.1</b> Computing correlations between two variables in a dataset</a></li>
-<li class="chapter" data-level="11.1.2" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#generating-and-exporting-a-correlation-matrix"><i class="fa fa-check"></i><b>11.1.2</b> Generating and exporting a correlation matrix</a></li>
+<li class="chapter" data-level="13.1.1" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#computing-correlations-between-two-variables-in-a-dataset"><i class="fa fa-check"></i><b>13.1.1</b> Computing correlations between two variables in a dataset</a></li>
+<li class="chapter" data-level="13.1.2" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#generating-and-exporting-a-correlation-matrix"><i class="fa fa-check"></i><b>13.1.2</b> Generating and exporting a correlation matrix</a></li>
 </ul></li>
-<li class="chapter" data-level="11.2" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#basic-regression-analysis"><i class="fa fa-check"></i><b>11.2</b> Basic regression analysis</a></li>
-<li class="chapter" data-level="11.3" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#working-with-categorical-variables-in-a-regression-model"><i class="fa fa-check"></i><b>11.3</b> Working with categorical variables in a regression model</a>
+<li class="chapter" data-level="13.2" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#basic-regression-analysis"><i class="fa fa-check"></i><b>13.2</b> Basic regression analysis</a></li>
+<li class="chapter" data-level="13.3" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#working-with-categorical-variables-in-a-regression-model"><i class="fa fa-check"></i><b>13.3</b> Working with categorical variables in a regression model</a>
 <ul>
-<li class="chapter" data-level="11.3.1" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#working-with-categorical-variables-using-factors"><i class="fa fa-check"></i><b>11.3.1</b> Working with categorical variables using factors</a></li>
-<li class="chapter" data-level="11.3.2" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#working-with-categorical-variables-by-creating-dummy-variables"><i class="fa fa-check"></i><b>11.3.2</b> Working with categorical variables by creating dummy variables</a></li>
+<li class="chapter" data-level="13.3.1" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#working-with-categorical-variables-using-factors"><i class="fa fa-check"></i><b>13.3.1</b> Working with categorical variables using factors</a></li>
+<li class="chapter" data-level="13.3.2" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#working-with-categorical-variables-by-creating-dummy-variables"><i class="fa fa-check"></i><b>13.3.2</b> Working with categorical variables by creating dummy variables</a></li>
 </ul></li>
-<li class="chapter" data-level="11.4" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#working-with-interaction-terms-in-regression-models"><i class="fa fa-check"></i><b>11.4</b> Working with interaction terms in regression models</a>
+<li class="chapter" data-level="13.4" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#working-with-interaction-terms-in-regression-models"><i class="fa fa-check"></i><b>13.4</b> Working with interaction terms in regression models</a>
 <ul>
-<li class="chapter" data-level="11.4.1" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#plotting-marginal-effects"><i class="fa fa-check"></i><b>11.4.1</b> Plotting marginal effects</a></li>
+<li class="chapter" data-level="13.4.1" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#plotting-marginal-effects"><i class="fa fa-check"></i><b>13.4.1</b> Plotting marginal effects</a></li>
 </ul></li>
-<li class="chapter" data-level="11.5" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#creating-and-exporting-regression-tables"><i class="fa fa-check"></i><b>11.5</b> Creating and exporting regression tables</a></li>
+<li class="chapter" data-level="13.5" data-path="elementary-data-analysis.html"><a href="elementary-data-analysis.html#creating-and-exporting-regression-tables"><i class="fa fa-check"></i><b>13.5</b> Creating and exporting regression tables</a></li>
 </ul></li>
-<li class="chapter" data-level="12" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html"><i class="fa fa-check"></i><b>12</b> Working with multiple datasets</a>
+<li class="chapter" data-level="14" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html"><i class="fa fa-check"></i><b>14</b> Working with multiple datasets</a>
 <ul>
-<li class="chapter" data-level="12.1" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#reading-in-multiple-files"><i class="fa fa-check"></i><b>12.1</b> Reading in multiple files</a></li>
-<li class="chapter" data-level="12.2" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#merging-data"><i class="fa fa-check"></i><b>12.2</b> Merging Data</a></li>
-<li class="chapter" data-level="12.3" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#appending-data"><i class="fa fa-check"></i><b>12.3</b> Appending Data</a></li>
-<li class="chapter" data-level="12.4" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#reshaping-data"><i class="fa fa-check"></i><b>12.4</b> Reshaping Data</a></li>
-<li class="chapter" data-level="12.5" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#automating-data-processing-tasks"><i class="fa fa-check"></i><b>12.5</b> Automating data processing tasks</a></li>
+<li class="chapter" data-level="14.1" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#reading-in-multiple-files"><i class="fa fa-check"></i><b>14.1</b> Reading in multiple files</a></li>
+<li class="chapter" data-level="14.2" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#merging-data"><i class="fa fa-check"></i><b>14.2</b> Merging Data</a></li>
+<li class="chapter" data-level="14.3" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#appending-data"><i class="fa fa-check"></i><b>14.3</b> Appending Data</a></li>
+<li class="chapter" data-level="14.4" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#reshaping-data"><i class="fa fa-check"></i><b>14.4</b> Reshaping Data</a></li>
+<li class="chapter" data-level="14.5" data-path="working-with-multiple-datasets.html"><a href="working-with-multiple-datasets.html#automating-data-processing-tasks"><i class="fa fa-check"></i><b>14.5</b> Automating data processing tasks</a></li>
 </ul></li>
-<li class="chapter" data-level="13" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html"><i class="fa fa-check"></i><b>13</b> Data Transfer Part 2: Exporting data</a>
+<li class="chapter" data-level="15" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html"><i class="fa fa-check"></i><b>15</b> Data Transfer Part 2: Exporting data</a>
 <ul>
-<li class="chapter" data-level="13.1" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html#exporting-a-data-frame"><i class="fa fa-check"></i><b>13.1</b> Exporting a data frame</a></li>
-<li class="chapter" data-level="13.2" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html#exporting-multiple-data-frames"><i class="fa fa-check"></i><b>13.2</b> Exporting multiple data frames</a></li>
-<li class="chapter" data-level="13.3" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html#exporting-other-objects-i.e.-visualizations"><i class="fa fa-check"></i><b>13.3</b> Exporting other objects (i.e. visualizations)</a></li>
+<li class="chapter" data-level="15.1" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html#exporting-a-data-frame"><i class="fa fa-check"></i><b>15.1</b> Exporting a data frame</a></li>
+<li class="chapter" data-level="15.2" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html#exporting-multiple-data-frames"><i class="fa fa-check"></i><b>15.2</b> Exporting multiple data frames</a></li>
+<li class="chapter" data-level="15.3" data-path="data-transfer-part-2-exporting-data.html"><a href="data-transfer-part-2-exporting-data.html#exporting-other-objects-i.e.-visualizations"><i class="fa fa-check"></i><b>15.3</b> Exporting other objects (i.e. visualizations)</a></li>
 </ul></li>
 <li class="part"><span><b>III Exercises in R</b></span></li>
-<li class="chapter" data-level="14" data-path="practice-exercises.html"><a href="practice-exercises.html"><i class="fa fa-check"></i><b>14</b> Practice Exercises</a></li>
-<li class="chapter" data-level="15" data-path="replication-exercise.html"><a href="replication-exercise.html"><i class="fa fa-check"></i><b>15</b> Replication Exercise</a></li>
+<li class="chapter" data-level="16" data-path="practice-exercises.html"><a href="practice-exercises.html"><i class="fa fa-check"></i><b>16</b> Practice Exercises</a></li>
+<li class="chapter" data-level="17" data-path="replication-exercise.html"><a href="replication-exercise.html"><i class="fa fa-check"></i><b>17</b> Replication Exercise</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 </ul>
@@ -255,28 +258,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="iteration" class="section level1 hasAnchor" number="7">
-<h1><span class="header-section-number">7</span> Iteration<a href="iteration.html#iteration" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="iteration" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">9</span> Iteration<a href="iteration.html#iteration" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p>Once we have a function written down, it is straightforward to apply that function to multiple inputs in an iterative fashion. For example, let’s say you have four different Fahrenheit temperature values that you would like to convert to celsius, using the <code>fahrenheit_to_celsius_converter</code> we developed above. One option would be to apply the <code>fahrenheit_to_celsius_converter</code> function to each of the Fahrenheit temperature inputs individually. For example, let’s say our Fahrenheit values, which we’d like to convert to celsius, are the following: 45.6, 95.9, 67.8, 43. We could, of course, run these values through the function individually, as below:</p>
-<div class="sourceCode" id="cb89"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb89-1"><a href="iteration.html#cb89-1" tabindex="-1"></a><span class="fu">fahrenheit_to_celsius_converter</span>(<span class="at">fahrenheit_input=</span><span class="fl">45.6</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="iteration.html#cb91-1" tabindex="-1"></a><span class="fu">fahrenheit_to_celsius_converter</span>(<span class="at">fahrenheit_input=</span><span class="fl">45.6</span>)</span></code></pre></div>
 <pre><code>## [1] 7.555556</code></pre>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="iteration.html#cb91-1" tabindex="-1"></a><span class="fu">fahrenheit_to_celsius_converter</span>(<span class="at">fahrenheit_input=</span><span class="fl">95.9</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="iteration.html#cb93-1" tabindex="-1"></a><span class="fu">fahrenheit_to_celsius_converter</span>(<span class="at">fahrenheit_input=</span><span class="fl">95.9</span>)</span></code></pre></div>
 <pre><code>## [1] 35.5</code></pre>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="iteration.html#cb93-1" tabindex="-1"></a><span class="fu">fahrenheit_to_celsius_converter</span>(<span class="at">fahrenheit_input=</span><span class="fl">67.8</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="iteration.html#cb95-1" tabindex="-1"></a><span class="fu">fahrenheit_to_celsius_converter</span>(<span class="at">fahrenheit_input=</span><span class="fl">67.8</span>)</span></code></pre></div>
 <pre><code>## [1] 19.88889</code></pre>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="iteration.html#cb95-1" tabindex="-1"></a><span class="fu">fahrenheit_to_celsius_converter</span>(<span class="at">fahrenheit_input=</span><span class="fl">43.</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="iteration.html#cb97-1" tabindex="-1"></a><span class="fu">fahrenheit_to_celsius_converter</span>(<span class="at">fahrenheit_input=</span><span class="fl">43.</span>)</span></code></pre></div>
 <pre><code>## [1] 6.111111</code></pre>
 <p>This is manageable with a collection of only four Fahrenheit values, but would quickly become tedious if you had a substantially larger set of Fahrenheit temperature values that required conversion. Instead of manually applying the function to each individual input value, we can instead put these values into a vector, and then iteratively apply the <code>fahrenheit_to_celsius_converter</code> function to each of these vector elements.</p>
 <p>Let’s first assign our Fahrenheit temperature values to a numeric vector object named <code>fahrenheit_input_vector</code>:</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="iteration.html#cb97-1" tabindex="-1"></a><span class="co"># makes a vector out of Fahrenheit values we want to convert, and assigns it to a new object named &quot;fahrenheit_input_vector&quot;</span></span>
-<span id="cb97-2"><a href="iteration.html#cb97-2" tabindex="-1"></a>fahrenheit_input_vector<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">45.6</span>, <span class="fl">95.9</span>, <span class="fl">67.8</span>, <span class="dv">43</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="iteration.html#cb99-1" tabindex="-1"></a><span class="co"># makes a vector out of Fahrenheit values we want to convert, and assigns it to a new object named &quot;fahrenheit_input_vector&quot;</span></span>
+<span id="cb99-2"><a href="iteration.html#cb99-2" tabindex="-1"></a>fahrenheit_input_vector<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">45.6</span>, <span class="fl">95.9</span>, <span class="fl">67.8</span>, <span class="dv">43</span>)</span></code></pre></div>
 <p>Our goal is to also iteratively apply our function to all of these vector elements, and deposit the transformed results into a new vector. In programming languages, functions are typically applied to to multiple inputs in an iterative fashion using a construct known as a for-loop, which some of you may already be familiar with. R users also frequently use specialized functions (instead of for-loops) to iterate over elements; this is often faster, or at the very least, makes R scripts more readable. One family of these iterative functions is the “Apply” family of functions. A more recent set of functions that facilitate iteration is part of the <em>tidyverse</em>, and is found within the <a href="https://purrr.tidyverse.org/"><em>purrr</em></a> package. These functions are known as <code>map()</code> functions, and we will use them here to iteratively apply our functions to multiple inputs.</p>
 <p>Let’s see how we can use a <code>map()</code> function to sequentially apply the <code>fahrenheit_to_celsius_converter()</code> function we created to several different values for the “fahrenheit_input” argument, contained in <code>fahrenheit_input_vector</code>. We’ll pass <code>fahrenheit_input_vector</code> as the first argument to the <code>map_dbl()</code> function, and <code>fahrenheit_to_celsius_converter</code> (i.e. the function we want to apply iteratively to the elements in `the<code>fahrenheit_input_vector</code> ) as the second argument. The result of this operation will be a new “results vector”, containing the transformed temperature values for each input in the original vector of Fahrenheit values (<code>fahrenheit_input_vector</code>). We’ll assign this result/output vector to a new object named <code>celsius_outputs_vector</code>:</p>
-<div class="sourceCode" id="cb98"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb98-1"><a href="iteration.html#cb98-1" tabindex="-1"></a><span class="co"># Iteratively applies the &quot;fahrenheit_to_celsius_converter&quot; to celsius input values in &quot;fahrenheit_input_vector&quot; and assigns the resulting vector of converted temperature values to &quot;celsius_ouputs_vector&quot;</span></span>
-<span id="cb98-2"><a href="iteration.html#cb98-2" tabindex="-1"></a>celsius_outputs_vector<span class="ot">&lt;-</span><span class="fu">map_dbl</span>(fahrenheit_input_vector, fahrenheit_to_celsius_converter)</span></code></pre></div>
+<div class="sourceCode" id="cb100"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb100-1"><a href="iteration.html#cb100-1" tabindex="-1"></a><span class="co"># Iteratively applies the &quot;fahrenheit_to_celsius_converter&quot; to celsius input values in &quot;fahrenheit_input_vector&quot; and assigns the resulting vector of converted temperature values to &quot;celsius_ouputs_vector&quot;</span></span>
+<span id="cb100-2"><a href="iteration.html#cb100-2" tabindex="-1"></a>celsius_outputs_vector<span class="ot">&lt;-</span><span class="fu">map_dbl</span>(fahrenheit_input_vector, fahrenheit_to_celsius_converter)</span></code></pre></div>
 <p>In short, the code above takes ``fahrenheit_input_vector<code>(i.e. a vector with the numbers 45.6, 95.9, 67.8, 43), and runs each of these numbers through the</code>fahrenheit_converter()<code>function, and sequentially deposits the transformed result to the newly created</code>celsius_outputs_vector()``` object, which contains the following elements:</p>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="iteration.html#cb99-1" tabindex="-1"></a><span class="co"># prints contents of &quot;celsius_outputs_vector&quot;</span></span>
-<span id="cb99-2"><a href="iteration.html#cb99-2" tabindex="-1"></a>celsius_outputs_vector</span></code></pre></div>
+<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="iteration.html#cb101-1" tabindex="-1"></a><span class="co"># prints contents of &quot;celsius_outputs_vector&quot;</span></span>
+<span id="cb101-2"><a href="iteration.html#cb101-2" tabindex="-1"></a>celsius_outputs_vector</span></code></pre></div>
 <pre><code>## [1]  7.555556 35.500000 19.888889  6.111111</code></pre>
 <p>More explicitly, the code that reads <code>celsius_outputs_vector&lt;-map_dbl(fahrenheit_input_vector, fahrenheit_converter)</code> did the following:</p>
 <ol style="list-style-type: decimal">
@@ -286,11 +289,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Pass 43 (the fourth element in the input vector, <code>fahrenheit_input_vector</code>) to the <code>fahrenheit_converter()</code> function, and deposit the output (6.111111) as the fourth element in <code>celsius_outputs_vector</code>.</li>
 </ol>
 <p>There are a variety of <code>map()</code> functions from the <em>purrr</em> package, and the precise one you should use turns on the number of arguments used by the function (in this example, there is of course only one argument, i.e. “fahrenheit_input”), and the desired class of the output (i.e. numeric vector, character vector, data frame, list etc.). For example, let’s say we want to apply the <code>fahrenheit_to_celsius_converter</code> function iteratively to the input values in <code>fahrenheit_input_vector</code>, but that we want the output values to be stored as a list, rather than as a vector. Instead of using the <code>map_dbl()</code> function, we can use the <code>map()</code> function, which always returns outputs as a list. Below, we pass our input vector (<code>fahrenheit_input_vector</code>), and the function we want to iteratively apply to the elements of the input vector (<code>fahrenheit_converter</code>) to the <code>map()</code> function. We’ll assign the output list to a new object named <code>celsius_outputs_list</code>:</p>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="iteration.html#cb101-1" tabindex="-1"></a><span class="co"># iteratively applies the &quot;fahrenheit_to_celsius_converter&quot; function to the input values in &quot;fahrenheit_input_vector&quot;, and assigns the list of celsius output values to a new object named &quot;celsius_outputs_list&quot;</span></span>
-<span id="cb101-2"><a href="iteration.html#cb101-2" tabindex="-1"></a>celsius_outputs_list<span class="ot">&lt;-</span><span class="fu">map</span>(fahrenheit_input_vector, fahrenheit_to_celsius_converter)</span></code></pre></div>
+<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="iteration.html#cb103-1" tabindex="-1"></a><span class="co"># iteratively applies the &quot;fahrenheit_to_celsius_converter&quot; function to the input values in &quot;fahrenheit_input_vector&quot;, and assigns the list of celsius output values to a new object named &quot;celsius_outputs_list&quot;</span></span>
+<span id="cb103-2"><a href="iteration.html#cb103-2" tabindex="-1"></a>celsius_outputs_list<span class="ot">&lt;-</span><span class="fu">map</span>(fahrenheit_input_vector, fahrenheit_to_celsius_converter)</span></code></pre></div>
 <p>Let’s print out the list of output values:</p>
-<div class="sourceCode" id="cb102"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb102-1"><a href="iteration.html#cb102-1" tabindex="-1"></a><span class="co"># prints contents of &quot;celsius_outputs_list&quot;</span></span>
-<span id="cb102-2"><a href="iteration.html#cb102-2" tabindex="-1"></a>celsius_outputs_list</span></code></pre></div>
+<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="iteration.html#cb104-1" tabindex="-1"></a><span class="co"># prints contents of &quot;celsius_outputs_list&quot;</span></span>
+<span id="cb104-2"><a href="iteration.html#cb104-2" tabindex="-1"></a>celsius_outputs_list</span></code></pre></div>
 <pre><code>## [[1]]
 ## [1] 7.555556
 ## 
@@ -303,27 +306,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [[4]]
 ## [1] 6.111111</code></pre>
 <p>We can confirm that <code>celsius_outputs_list</code> is indeed a list using the <code>class()</code> function that we introduced earlier:</p>
-<div class="sourceCode" id="cb104"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb104-1"><a href="iteration.html#cb104-1" tabindex="-1"></a><span class="co"># checks data structure of &quot;celsius_outputs_list&quot;</span></span>
-<span id="cb104-2"><a href="iteration.html#cb104-2" tabindex="-1"></a><span class="fu">class</span>(celsius_outputs_list)</span></code></pre></div>
+<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="iteration.html#cb106-1" tabindex="-1"></a><span class="co"># checks data structure of &quot;celsius_outputs_list&quot;</span></span>
+<span id="cb106-2"><a href="iteration.html#cb106-2" tabindex="-1"></a><span class="fu">class</span>(celsius_outputs_list)</span></code></pre></div>
 <pre><code>## [1] &quot;list&quot;</code></pre>
 <p>Now, let’s say we we want to organize our information in a data frame, where one column represents our Fahrenheit input values, and the other column represents the corresponding Celsius output values. To do so, we’ll first slightly modify our function to return a data frame:</p>
-<div class="sourceCode" id="cb106"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb106-1"><a href="iteration.html#cb106-1" tabindex="-1"></a><span class="co"># Creates function that takes an input value in degrees Fahrenheit (fahrenheit_input), converts this value to Celsius, and returns a data frame with the input Fahrenheit temperature value as one column, and the corresponding Celsius temperature value as another column; the function is assigned to a new object named &quot;fahrenheit_to_celsius_converter_df&quot; </span></span>
-<span id="cb106-2"><a href="iteration.html#cb106-2" tabindex="-1"></a>fahrenheit_to_celsius_converter_df<span class="ot">&lt;-</span><span class="cf">function</span>(fahrenheit_input){</span>
-<span id="cb106-3"><a href="iteration.html#cb106-3" tabindex="-1"></a>  celsius_output<span class="ot">&lt;-</span>(fahrenheit_input<span class="dv">-32</span>)<span class="sc">*</span>(<span class="dv">5</span><span class="sc">/</span><span class="dv">9</span>)</span>
-<span id="cb106-4"><a href="iteration.html#cb106-4" tabindex="-1"></a>  celsius_output_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(fahrenheit_input, celsius_output)</span>
-<span id="cb106-5"><a href="iteration.html#cb106-5" tabindex="-1"></a>  <span class="fu">return</span>(celsius_output_df)</span>
-<span id="cb106-6"><a href="iteration.html#cb106-6" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb108-1"><a href="iteration.html#cb108-1" tabindex="-1"></a><span class="co"># Creates function that takes an input value in degrees Fahrenheit (fahrenheit_input), converts this value to Celsius, and returns a data frame with the input Fahrenheit temperature value as one column, and the corresponding Celsius temperature value as another column; the function is assigned to a new object named &quot;fahrenheit_to_celsius_converter_df&quot; </span></span>
+<span id="cb108-2"><a href="iteration.html#cb108-2" tabindex="-1"></a>fahrenheit_to_celsius_converter_df<span class="ot">&lt;-</span><span class="cf">function</span>(fahrenheit_input){</span>
+<span id="cb108-3"><a href="iteration.html#cb108-3" tabindex="-1"></a>  celsius_output<span class="ot">&lt;-</span>(fahrenheit_input<span class="dv">-32</span>)<span class="sc">*</span>(<span class="dv">5</span><span class="sc">/</span><span class="dv">9</span>)</span>
+<span id="cb108-4"><a href="iteration.html#cb108-4" tabindex="-1"></a>  celsius_output_df<span class="ot">&lt;-</span><span class="fu">data.frame</span>(fahrenheit_input, celsius_output)</span>
+<span id="cb108-5"><a href="iteration.html#cb108-5" tabindex="-1"></a>  <span class="fu">return</span>(celsius_output_df)</span>
+<span id="cb108-6"><a href="iteration.html#cb108-6" tabindex="-1"></a>}</span></code></pre></div>
 <p>Now, let’s test out this new function for a single “fahrenheit_input” value, to make sure it works as expected; we’ll test it out for a value of 63 degrees Fahrenheit:</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="iteration.html#cb107-1" tabindex="-1"></a><span class="co"># applies &quot;fahrenheit_to_celsius_converter_df&quot; function to input value of 63 degrees Fahrenheit</span></span>
-<span id="cb107-2"><a href="iteration.html#cb107-2" tabindex="-1"></a><span class="fu">fahrenheit_to_celsius_converter_df</span>(<span class="at">fahrenheit_input=</span><span class="dv">63</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="iteration.html#cb109-1" tabindex="-1"></a><span class="co"># applies &quot;fahrenheit_to_celsius_converter_df&quot; function to input value of 63 degrees Fahrenheit</span></span>
+<span id="cb109-2"><a href="iteration.html#cb109-2" tabindex="-1"></a><span class="fu">fahrenheit_to_celsius_converter_df</span>(<span class="at">fahrenheit_input=</span><span class="dv">63</span>)</span></code></pre></div>
 <pre><code>##   fahrenheit_input celsius_output
 ## 1               63       17.22222</code></pre>
 <p>Having confirmed that the function works as expected, let’s now assemble a dataset using multiple Fahrenheit input values, where one column consists of these input values, and the second column consists of the corresponding Celsius outputs. We can do so using the <code>map_dfr()</code> function from the <em>purrr</em> package, which is a cousin of the <code>map()</code> and <code>map_dbl()</code> functions we explored above. While the <code>map()</code> function returns function outputs in a list, and the <code>map_dbl()</code> function returns function outputs in a numeric vector, the <code>map_dfr()</code> is used to bind together multiple function outputs rowwise into a data frame. To make this more concrete, let’s consider the code below, which uses <code>map_dfr()</code> to iteratively apply the <code>fahrenheit_to_celsius_converter_df</code> function to the Fahrenheit values in <code>fahrenheit_input_vector</code>, and assemble the resulting rows into a data frame that is assigned to a new object named <code>celsius_outputs_df</code>:</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="iteration.html#cb109-1" tabindex="-1"></a><span class="co"># Iteratively applies the &quot;fahrenheit_to_celsius_converter_df&quot; function to input values in &quot;fahrenheit_input_vector&quot; to generate a data frame with column of input Fahrenheit values, and column of corresponding output Celsius values; assigns this data frame to a new object named &quot;celsius_outputs_df&quot;</span></span>
-<span id="cb109-2"><a href="iteration.html#cb109-2" tabindex="-1"></a>celsius_outputs_df<span class="ot">&lt;-</span><span class="fu">map_dfr</span>(fahrenheit_input_vector, fahrenheit_to_celsius_converter_df)</span></code></pre></div>
+<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="iteration.html#cb111-1" tabindex="-1"></a><span class="co"># Iteratively applies the &quot;fahrenheit_to_celsius_converter_df&quot; function to input values in &quot;fahrenheit_input_vector&quot; to generate a data frame with column of input Fahrenheit values, and column of corresponding output Celsius values; assigns this data frame to a new object named &quot;celsius_outputs_df&quot;</span></span>
+<span id="cb111-2"><a href="iteration.html#cb111-2" tabindex="-1"></a>celsius_outputs_df<span class="ot">&lt;-</span><span class="fu">map_dfr</span>(fahrenheit_input_vector, fahrenheit_to_celsius_converter_df)</span></code></pre></div>
 <p>Let’s now print the contents of <code>celsius_outputs_df</code>:</p>
-<div class="sourceCode" id="cb110"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb110-1"><a href="iteration.html#cb110-1" tabindex="-1"></a><span class="co"># prints contents of </span></span>
-<span id="cb110-2"><a href="iteration.html#cb110-2" tabindex="-1"></a>celsius_outputs_df</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="iteration.html#cb112-1" tabindex="-1"></a><span class="co"># prints contents of </span></span>
+<span id="cb112-2"><a href="iteration.html#cb112-2" tabindex="-1"></a>celsius_outputs_df</span></code></pre></div>
 <pre><code>##   fahrenheit_input celsius_output
 ## 1             45.6       7.555556
 ## 2             95.9      35.500000
@@ -331,31 +334,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4             43.0       6.111111</code></pre>
 <p>We now have a dataset with one column consisting of our Fahrenheit inputs (taken from <code>fahrenheit_input_vector</code>), and a second column consisting of our Celsius outputs (derived by applying the <code>fahrenheit_to_celsius_converter_df()</code> function to our vector of input values, `<code>fahrenheit_input_vector</code>).</p>
 <p>We’ve just covered three different <em>purrr</em> functions: <code>map()</code> (which returns a list), <code>map_dbl()</code> (which returns a vector), and <code>map_dfr()</code> (which returns a dataframe). There are other map functions which return different types of objects; you can see a list of these other map functions by inspecting the documentation for the <code>map()</code> function:</p>
-<div class="sourceCode" id="cb112"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb112-1"><a href="iteration.html#cb112-1" tabindex="-1"></a>?map</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="iteration.html#cb114-1" tabindex="-1"></a>?map</span></code></pre></div>
 <p>The process of iteratively applying a function with more than one argument is beyond the scope of the workshop, but the same general principles are at work in those cases. If you’d like to explore the process of iteratively applying a function with two arguments, or more than two arguments, check out the documentation for the <code>map2()</code> and <code>pmap()</code> functions, respectively.</p>
 <p>Before we move into the next section, let’s consider one more example of how you can use your own custom-written functions in conjunction with the iteration functions in the <em>purrr</em> package to write scripts that can help you to automate tedious tasks. In particular, we’ll demonstrate the utility of the list data structure in helping you to carry out such automation tasks.</p>
 <p>Let’s say, for example, that you have temperature values stored in Fahrenheit, for multiple countries, and want to quickly convert those country-level values to degrees Celsius. Suppose that these Fahrenheit values are stored in a series of vectors:</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="iteration.html#cb113-1" tabindex="-1"></a><span class="co"># creates sample country-level Fahrenheit data for Country A</span></span>
-<span id="cb113-2"><a href="iteration.html#cb113-2" tabindex="-1"></a>countryA_fahrenheit<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">55</span>,<span class="dv">67</span>,<span class="dv">91</span>,<span class="dv">23</span>, <span class="dv">77</span>, <span class="dv">98</span>, <span class="dv">27</span>)</span>
-<span id="cb113-3"><a href="iteration.html#cb113-3" tabindex="-1"></a></span>
-<span id="cb113-4"><a href="iteration.html#cb113-4" tabindex="-1"></a><span class="co"># creates sample country-level Fahrenheit data for Country B</span></span>
-<span id="cb113-5"><a href="iteration.html#cb113-5" tabindex="-1"></a>countryB_fahrenheit<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">33</span>,<span class="dv">45</span>,<span class="dv">11</span>,<span class="dv">66</span>, <span class="dv">44</span>)</span>
-<span id="cb113-6"><a href="iteration.html#cb113-6" tabindex="-1"></a></span>
-<span id="cb113-7"><a href="iteration.html#cb113-7" tabindex="-1"></a><span class="co"># creates sample country-level Fahrenheit data for Country C</span></span>
-<span id="cb113-8"><a href="iteration.html#cb113-8" tabindex="-1"></a>countryC_fahrenheit<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">60</span>,<span class="dv">55</span>,<span class="dv">12</span>,<span class="dv">109</span>)</span>
-<span id="cb113-9"><a href="iteration.html#cb113-9" tabindex="-1"></a></span>
-<span id="cb113-10"><a href="iteration.html#cb113-10" tabindex="-1"></a><span class="co"># creates sample country-level Fahrenheit data for Country D</span></span>
-<span id="cb113-11"><a href="iteration.html#cb113-11" tabindex="-1"></a>countryD_fahrenheit<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">76</span>, <span class="dv">24</span>, <span class="dv">77</span>, <span class="dv">78</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="iteration.html#cb115-1" tabindex="-1"></a><span class="co"># creates sample country-level Fahrenheit data for Country A</span></span>
+<span id="cb115-2"><a href="iteration.html#cb115-2" tabindex="-1"></a>countryA_fahrenheit<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">55</span>,<span class="dv">67</span>,<span class="dv">91</span>,<span class="dv">23</span>, <span class="dv">77</span>, <span class="dv">98</span>, <span class="dv">27</span>)</span>
+<span id="cb115-3"><a href="iteration.html#cb115-3" tabindex="-1"></a></span>
+<span id="cb115-4"><a href="iteration.html#cb115-4" tabindex="-1"></a><span class="co"># creates sample country-level Fahrenheit data for Country B</span></span>
+<span id="cb115-5"><a href="iteration.html#cb115-5" tabindex="-1"></a>countryB_fahrenheit<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">33</span>,<span class="dv">45</span>,<span class="dv">11</span>,<span class="dv">66</span>, <span class="dv">44</span>)</span>
+<span id="cb115-6"><a href="iteration.html#cb115-6" tabindex="-1"></a></span>
+<span id="cb115-7"><a href="iteration.html#cb115-7" tabindex="-1"></a><span class="co"># creates sample country-level Fahrenheit data for Country C</span></span>
+<span id="cb115-8"><a href="iteration.html#cb115-8" tabindex="-1"></a>countryC_fahrenheit<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">60</span>,<span class="dv">55</span>,<span class="dv">12</span>,<span class="dv">109</span>)</span>
+<span id="cb115-9"><a href="iteration.html#cb115-9" tabindex="-1"></a></span>
+<span id="cb115-10"><a href="iteration.html#cb115-10" tabindex="-1"></a><span class="co"># creates sample country-level Fahrenheit data for Country D</span></span>
+<span id="cb115-11"><a href="iteration.html#cb115-11" tabindex="-1"></a>countryD_fahrenheit<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">76</span>, <span class="dv">24</span>, <span class="dv">77</span>, <span class="dv">78</span>)</span></code></pre></div>
 <p>Let’s say that we want to take all of these vectors, and iteratively pass them as arguments to the <code>fahrenheit_to_celsius_converter_df</code> function, thereby creating four country-specific data frames that have the original Fahrenheit values in one column and the transformed Celsius values in the other column. The easiest way to do this is to first put our input vectors into a list, which we’ll assign to a new object named <code>temperature_input_list</code>:</p>
-<div class="sourceCode" id="cb114"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb114-1"><a href="iteration.html#cb114-1" tabindex="-1"></a><span class="co"># Creates list of input vectors and assigns this list to new object named &quot;input_list&quot;</span></span>
-<span id="cb114-2"><a href="iteration.html#cb114-2" tabindex="-1"></a>temperature_input_list<span class="ot">&lt;-</span><span class="fu">list</span>(countryA_fahrenheit, countryB_fahrenheit, countryC_fahrenheit, countryD_fahrenheit) </span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="iteration.html#cb116-1" tabindex="-1"></a><span class="co"># Creates list of input vectors and assigns this list to new object named &quot;input_list&quot;</span></span>
+<span id="cb116-2"><a href="iteration.html#cb116-2" tabindex="-1"></a>temperature_input_list<span class="ot">&lt;-</span><span class="fu">list</span>(countryA_fahrenheit, countryB_fahrenheit, countryC_fahrenheit, countryD_fahrenheit) </span></code></pre></div>
 <p>Now, we’ll use the <code>map()</code> function to iteratively pass the vectors in <code>temperature_input_list</code> as arguments to the <code>fahrenheit_to_celsius_converter_df</code> function, and deposits the resulting data frames into a list; we’ll assign this list that contains the output data frames to a new list object, named <code>processed_temperature_data_list</code>:</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="iteration.html#cb115-1" tabindex="-1"></a><span class="co"># Iteratively passes vectors in &quot;temperature_input_list&quot; as arguments to &quot;fahrenheit_to_celsius_converter_df&quot; and deposits the resulting data frames to a list, which is assigned to a new object named &quot;processed_temperature_data_list&quot;</span></span>
-<span id="cb115-2"><a href="iteration.html#cb115-2" tabindex="-1"></a>processed_temperature_data_list<span class="ot">&lt;-</span><span class="fu">map</span>(temperature_input_list, fahrenheit_to_celsius_converter_df)</span></code></pre></div>
+<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="iteration.html#cb117-1" tabindex="-1"></a><span class="co"># Iteratively passes vectors in &quot;temperature_input_list&quot; as arguments to &quot;fahrenheit_to_celsius_converter_df&quot; and deposits the resulting data frames to a list, which is assigned to a new object named &quot;processed_temperature_data_list&quot;</span></span>
+<span id="cb117-2"><a href="iteration.html#cb117-2" tabindex="-1"></a>processed_temperature_data_list<span class="ot">&lt;-</span><span class="fu">map</span>(temperature_input_list, fahrenheit_to_celsius_converter_df)</span></code></pre></div>
 <p>In effect, the code above takes the <code>countryA_fahrenheit</code> vector, uses it as the argument to the <code>fahrenheit_to_celsius_converter_df</code> function, and deposits the resulting data frame as the first element in the <code>processed_temperature_data_list</code> list; it then takes the <code>countryB_fahrenheit</code> vector, uses it as the argument to the <code>fahrenheit_to_celsius_converter_df</code> function, and deposits the resulting data frame as the second element in the <code>processed_temperature_data_list</code> list; and so on.</p>
 <p>Let’s print the contents of <code>processed_temperature_data_list</code> and confirm that our data frames have been created as expected:</p>
-<div class="sourceCode" id="cb116"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb116-1"><a href="iteration.html#cb116-1" tabindex="-1"></a><span class="co"># prints contents of &quot;processed_temperature_data_list&quot;</span></span>
-<span id="cb116-2"><a href="iteration.html#cb116-2" tabindex="-1"></a>processed_temperature_data_list</span></code></pre></div>
+<div class="sourceCode" id="cb118"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb118-1"><a href="iteration.html#cb118-1" tabindex="-1"></a><span class="co"># prints contents of &quot;processed_temperature_data_list&quot;</span></span>
+<span id="cb118-2"><a href="iteration.html#cb118-2" tabindex="-1"></a>processed_temperature_data_list</span></code></pre></div>
 <pre><code>## [[1]]
 ##   fahrenheit_input celsius_output
 ## 1               55      12.777778
@@ -398,7 +401,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="writing-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-packages.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="data-transfer-part-1-importing-data-into-r-studio.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>

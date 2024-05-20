@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>4 Object assignment and manipulation | An R Primer for Social Scientists</title>
-  <meta name="description" content="4 Object assignment and manipulation | An R Primer for Social Scientists" />
+  <title>7 Global and Local Environments | An R Primer for Social Scientists</title>
+  <meta name="description" content="7 Global and Local Environments | An R Primer for Social Scientists" />
   <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="4 Object assignment and manipulation | An R Primer for Social Scientists" />
+  <meta property="og:title" content="7 Global and Local Environments | An R Primer for Social Scientists" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="4 Object assignment and manipulation | An R Primer for Social Scientists" />
+  <meta name="twitter:title" content="7 Global and Local Environments | An R Primer for Social Scientists" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="r-as-a-calculator.html"/>
-<link rel="next" href="data-structures.html"/>
+<link rel="prev" href="writing-functions.html"/>
+<link rel="next" href="r-packages.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -258,108 +258,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="object-assignment-and-manipulation" class="section level1 hasAnchor" number="4">
-<h1><span class="header-section-number">4</span> Object assignment and manipulation<a href="object-assignment-and-manipulation.html#object-assignment-and-manipulation" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>The concept of object (or variable) assignment is a fundamental concept when working in a scripting environment; indeed, the ability to easily assign values to objects is what allows us to easily and intuitively manipulate and process our data in a programmatic setting. To better understand the mechanics of object assignment, consider the following:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="object-assignment-and-manipulation.html#cb10-1" tabindex="-1"></a><span class="co"># assign value 5 to new object named x</span></span>
-<span id="cb10-2"><a href="object-assignment-and-manipulation.html#cb10-2" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="dv">5</span></span></code></pre></div>
-<p>In the code above, we use R’s assignment operator, <code>&lt;-</code>, to assign the value 5 to an object named <code>x</code>. Now that an object named <code>x</code> has been created and assigned the value 5, printing <code>x</code> in our console (or printing <code>x</code> in our script and running it) will return the value that has been assigned to the <code>x</code> object, i.e. 5:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="object-assignment-and-manipulation.html#cb11-1" tabindex="-1"></a><span class="co"># prints value assigned to &quot;x&quot;</span></span>
-<span id="cb11-2"><a href="object-assignment-and-manipulation.html#cb11-2" tabindex="-1"></a>x</span></code></pre></div>
-<pre><code>## [1] 5</code></pre>
-<p>More generally, the process of assignment effectively equates the output created by the code on the right side of the assignment operator (<code>&lt;-</code>) to an object with a name that is specified on the left side of the assignment operator. Whenever we want to look at the contents of an object (i.e. the output created by the code to the right side of the assignment operator), we simply print the name of the object in the R console (or print the name and run it within a script).</p>
-<p>Let’s create another object, named <code>y</code>, and assign it the value “12”:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="object-assignment-and-manipulation.html#cb13-1" tabindex="-1"></a><span class="co"># assign value 12 to new object named y</span></span>
-<span id="cb13-2"><a href="object-assignment-and-manipulation.html#cb13-2" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="dv">12</span></span></code></pre></div>
-<p>As we noted above, we can print the value that was assigned to <code>y</code> by printing its name:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="object-assignment-and-manipulation.html#cb14-1" tabindex="-1"></a><span class="co"># prints value assigned to &quot;y&quot;</span></span>
-<span id="cb14-2"><a href="object-assignment-and-manipulation.html#cb14-2" tabindex="-1"></a>y</span></code></pre></div>
-<pre><code>## [1] 12</code></pre>
-<p>It’s possible to use existing objects to assign values to new ones. For example, we can assign the sum of <code>x</code> and <code>y</code> to a new object that we’ll name <code>xy_sum</code>:</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="object-assignment-and-manipulation.html#cb16-1" tabindex="-1"></a><span class="co"># creates a new object, named &quot;xy_sum&quot; whose value is the sum of &quot;x&quot; and &quot;y&quot;</span></span>
-<span id="cb16-2"><a href="object-assignment-and-manipulation.html#cb16-2" tabindex="-1"></a>xy_sum<span class="ot">&lt;-</span>x<span class="sc">+</span>y</span></code></pre></div>
-<p>Now, let’s print the contents of <code>xy_sum</code></p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="object-assignment-and-manipulation.html#cb17-1" tabindex="-1"></a><span class="co"># prints contents of &quot;xy_sum&quot;</span></span>
-<span id="cb17-2"><a href="object-assignment-and-manipulation.html#cb17-2" tabindex="-1"></a>xy_sum</span></code></pre></div>
-<pre><code>## [1] 17</code></pre>
-<p>As expected, we see that the value assigned to <code>xy_sum</code> is “17” (i.e. the sum of the values assigned to <code>x</code> and <code>y</code>).</p>
-<p>It is possible to change the value assigned to a given object. For example, let’s say we want to change the value assigned to <code>x</code> from “5” to “8”:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="object-assignment-and-manipulation.html#cb19-1" tabindex="-1"></a><span class="co"># assign value of &quot;8&quot; to object named &quot;x&quot;</span></span>
-<span id="cb19-2"><a href="object-assignment-and-manipulation.html#cb19-2" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="dv">8</span></span></code></pre></div>
-<p>We can now confirm that <code>x</code> is now associated with the value “8”</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="object-assignment-and-manipulation.html#cb20-1" tabindex="-1"></a><span class="co"># prints updated value of &quot;x&quot;</span></span>
-<span id="cb20-2"><a href="object-assignment-and-manipulation.html#cb20-2" tabindex="-1"></a>x</span></code></pre></div>
-<pre><code>## [1] 8</code></pre>
-<p>It’s worth noting that updating the value assigned to <code>x</code> will not automatically update the value assigned to <code>xy_sum</code> (which, recall, is the sum of <code>x</code> and <code>y</code>). If we print the value assigned to <code>xy_sum</code>, note that it is still “17”):</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="object-assignment-and-manipulation.html#cb22-1" tabindex="-1"></a>xy_sum</span></code></pre></div>
-<pre><code>## [1] 17</code></pre>
-<p>In order for the value assigned to <code>xy_sum</code> to be updated with the new value of <code>x</code>, we must run the assignment operation again:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="object-assignment-and-manipulation.html#cb24-1" tabindex="-1"></a><span class="co"># assigns sum of &quot;y&quot; and newly updated value of &quot;x&quot; to &quot;xy_sum&quot; object</span></span>
-<span id="cb24-2"><a href="object-assignment-and-manipulation.html#cb24-2" tabindex="-1"></a>xy_sum<span class="ot">&lt;-</span>x<span class="sc">+</span>y</span></code></pre></div>
-<p>Now, the value of <code>xy_sum</code> should reflect the updated value of <code>x</code>, which we can confirm by printing the value of <code>xy_sum</code>:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="object-assignment-and-manipulation.html#cb25-1" tabindex="-1"></a><span class="co"># prints value of &quot;xy_sum&quot;</span></span>
-<span id="cb25-2"><a href="object-assignment-and-manipulation.html#cb25-2" tabindex="-1"></a>xy_sum</span></code></pre></div>
-<pre><code>## [1] 20</code></pre>
-<p>Note that the value assigned to <code>xy_sum</code> is now “20” (the sum of “8” and “12”), rather than “17” (the sum of “5” and “12”).</p>
-<p>While the examples above were very simple, we can assign virtually any R code, and by extension, the data structure(s) generated by that code (such as datasets, vectors, graphs/plots etc.) to an R object. When naming your objects, try to be descriptive, so that the name of the object signifies something about its corresponding value.</p>
-<p>Below, consider a simple example of an object, named <code>our_location</code> that has been assigned a non-numeric value. It’s value is a string, or textual information:</p>
-<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="object-assignment-and-manipulation.html#cb27-1" tabindex="-1"></a><span class="co"># assigns text string &quot;Boulder, CO&quot; to </span></span>
-<span id="cb27-2"><a href="object-assignment-and-manipulation.html#cb27-2" tabindex="-1"></a>our_location<span class="ot">&lt;-</span><span class="st">&quot;Boulder, CO&quot;</span></span></code></pre></div>
-<p>We can print string that has been assigned to the <code>location</code> object by typing the name of the object in our console, or running it from our script:</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="object-assignment-and-manipulation.html#cb28-1" tabindex="-1"></a><span class="co"># prints value of &quot;our_location&quot; object</span></span>
-<span id="cb28-2"><a href="object-assignment-and-manipulation.html#cb28-2" tabindex="-1"></a>our_location</span></code></pre></div>
-<pre><code>## [1] &quot;Boulder, CO&quot;</code></pre>
-<p>Note that generally speaking, you have a lot of flexibility in naming your R objects, but there are certain rules. For example, object names must start with a letter, and cannot contain any special symbols (they can only contain letters, numbers, underscores, and periods). Also, object names cannot contain multiple unconnected words; if you’d like to use multiple words or phrases, connect the discrete elements with an underscore (<code>_</code>), or use camel case (where different words are distinguished by beginning each discrete word begins with a capitalized letter).</p>
-<p>It is also worth emphasizing that object names are case sensitive; in order to print the value assigned to an object, that object’s name must be printed <em>exactly</em> as it was created. For example, if we were to type <code>our_Location</code>, we would get an error, since there is no <code>our_Location</code> object (only an <code>our_location</code> object):</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="object-assignment-and-manipulation.html#cb30-1" tabindex="-1"></a>our_Location</span></code></pre></div>
-<pre><code>## Error in eval(expr, envir, enclos): object &#39;our_Location&#39; not found</code></pre>
-<p>In order to keep track of the objects we have created, we can use the handy <code>ls()</code> function, which will print the names of all the objects that are in memory:</p>
-<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="object-assignment-and-manipulation.html#cb32-1" tabindex="-1"></a><span class="co"># prints objects in memory</span></span>
-<span id="cb32-2"><a href="object-assignment-and-manipulation.html#cb32-2" tabindex="-1"></a><span class="fu">ls</span>()</span></code></pre></div>
-<pre><code>##  [1] &quot;africa_summary&quot;                     &quot;arbitrary_values&quot;                  
-##  [3] &quot;arbitrary_values_2x&quot;                &quot;asia_europe_africa&quot;                
-##  [5] &quot;celsius_outputs_df&quot;                 &quot;celsius_outputs_list&quot;              
-##  [7] &quot;celsius_outputs_vector&quot;             &quot;cgexp_africa&quot;                      
-##  [9] &quot;cgexp_africa_ascending&quot;             &quot;cgexp_africa_ascending_inverted&quot;   
-## [11] &quot;cgexp_africa_descending&quot;            &quot;cor_matrix&quot;                        
-## [13] &quot;country_df&quot;                         &quot;countryA_fahrenheit&quot;               
-## [15] &quot;countryB_fahrenheit&quot;                &quot;countryC_fahrenheit&quot;               
-## [17] &quot;countryD_fahrenheit&quot;                &quot;crosstab_federal_continent&quot;        
-## [19] &quot;desired_variables&quot;                  &quot;df&quot;                                
-## [21] &quot;example_list&quot;                       &quot;fahrenheit_input_vector&quot;           
-## [23] &quot;fahrenheit_to_celsius_converter&quot;    &quot;fahrenheit_to_celsius_converter_df&quot;
-## [25] &quot;fdi&quot;                                &quot;filenames&quot;                         
-## [27] &quot;high_revenues&quot;                      &quot;marginal_effect_federalism&quot;        
-## [29] &quot;minority_catholic&quot;                  &quot;model_list&quot;                        
-## [31] &quot;months_four&quot;                        &quot;name_vector&quot;                       
-## [33] &quot;oecd_countries&quot;                     &quot;oecd_federal_countries&quot;            
-## [35] &quot;our_location&quot;                       &quot;processed_temperature_data_list&quot;   
-## [37] &quot;pt&quot;                                 &quot;pt_africa&quot;                         
-## [39] &quot;pt_cloud&quot;                           &quot;pt_copy&quot;                           
-## [41] &quot;pt_copy_sans_africa&quot;                &quot;pt_copy_selection&quot;                 
-## [43] &quot;pt_copy_selection_modified&quot;         &quot;pt_copy_summarystats1&quot;             
-## [45] &quot;regression1&quot;                        &quot;regression2&quot;                       
-## [47] &quot;regression2_alt&quot;                    &quot;scatter_cgexp_trade&quot;               
-## [49] &quot;scatter_cgexp_trade_facets&quot;         &quot;scatter_cgexp_trade_grouped&quot;       
-## [51] &quot;scatter_cgexp_trade_line&quot;           &quot;summary_stats_by_continent&quot;        
-## [53] &quot;temperature_input_list&quot;             &quot;test&quot;                              
-## [55] &quot;trade_age_by_continent&quot;             &quot;trade_federal_interaction&quot;         
-## [57] &quot;wb&quot;                                 &quot;WB_debt&quot;                           
-## [59] &quot;WB_fdi&quot;                             &quot;wb_file_list&quot;                      
-## [61] &quot;WB_filenames_export&quot;                &quot;wb_files&quot;                          
-## [63] &quot;wb_modified&quot;                        &quot;world_bank_list&quot;                   
-## [65] &quot;world_bank_list_cleaned&quot;            &quot;worldbank_cleaning_function&quot;       
-## [67] &quot;worldbank_filenames&quot;                &quot;worldbank_filenames_base&quot;          
-## [69] &quot;x&quot;                                  &quot;xy_sum&quot;                            
-## [71] &quot;y&quot;</code></pre>
+<div id="global-and-local-environments" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">7</span> Global and Local Environments<a href="global-and-local-environments.html#global-and-local-environments" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="r-as-a-calculator.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-structures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="writing-functions.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="r-packages.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

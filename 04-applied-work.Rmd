@@ -212,6 +212,8 @@ crosstab_federal_continent
 
 This tells us, for instance, that among Latin American countries, 19 had a unitary government, and 4 had federal structure of government. 
 
+## Missing Data
+
 ## Basic Data Cleaning and Preparation Tasks
 
 After getting a sense of your data by computing some summary statistics and running some crosstabs, you'll often have a sense of how you would like to clean or transform your data for analysis. This subsection briefly describes some functions that are useful for these basic data-preparation tasks. 
